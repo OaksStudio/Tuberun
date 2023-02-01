@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54ca3fb5b2b8d740aac4f028887fdc5, type: 3}
+  m_Name: SO_Player_2_Puller
+  m_EditorClassIdentifier: 
+  PullForce: 1
+  _controlMap:
+    KeysMapped:
+    - KeyCode: 273
+      Direction: 0
+    - KeyCode: 274
+      Direction: 1
+    - KeyCode: 276
+      Direction: 3
+    - KeyCode: 275
+      Direction: 2
