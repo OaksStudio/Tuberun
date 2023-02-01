@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tuber : MonoBehaviour
 {
-    public SOTuberInfo TuberInfo;
+    public SOTuber TuberInfo;
 
     [SerializeField] private List<Direction> _directions = new List<Direction>();
 
@@ -16,34 +16,6 @@ public class Tuber : MonoBehaviour
     public ControlMap controlMap;
 
     public Action OnPull, OnMiss, OnRelease = delegate { };
-
-
-    [System.Serializable]
-    public class ControlMap
-    {
-        public List<Map> KeysMapped = new List<Map>();
-
-        public Action<Direction> OnKeyDown;
-
-        [System.Serializable]
-        public struct Map
-        {
-            public KeyCode KeyCode;
-            public Direction Direction;
-
-        }
-
-        public void CheckKeyDown()
-        {
-            for (int i = 0; i < KeysMapped.Count; i++)
-            {
-                if (Input.GetKeyDown(KeysMapped[i].KeyCode))
-                {
-                    OnKeyDown?.Invoke(KeysMapped[i].Direction);
-                }
-            }
-        }
-    }
 
     private void Start()
     {
@@ -62,7 +34,7 @@ public class Tuber : MonoBehaviour
         controlMap.CheckKeyDown();
     }
 
-    public void Setup(SOTuberInfo tuberInfo)
+    public void Setup(SOTuber tuberInfo)
     {
         _currentDeepness = TuberInfo.Deepness;
         _directions = tuberInfo.directions;
