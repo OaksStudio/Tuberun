@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3013299187
+    locked: 0
+  - name: Ground
+    uniqueID: 905439019
+    locked: 0
+  - name: Tuber
+    uniqueID: 1936260489
+    locked: 0
+  - name: Frontground
+    uniqueID: 896943677
+    locked: 0
