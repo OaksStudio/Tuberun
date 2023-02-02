@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7ac4d4ed65c8f43b3fe3efca671d1d, type: 3}
   m_Name: SO_Gameplay
   m_EditorClassIdentifier: 
-  ScenePath: Assets/Scenes/SCN_Gameplay.unity
+  ScenePath: Assets/Scenes/SCN_Gameplay_NormalRun.unity
