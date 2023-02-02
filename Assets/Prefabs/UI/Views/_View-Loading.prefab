@@ -528,7 +528,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 542485604884314097, guid: 7900b58e74e39054d81121e53fbc9e04, type: 3}
       propertyPath: m_Name
-      value: PFB_View-Loading
+      value: _View-Loading
       objectReference: {fileID: 0}
     - target: {fileID: 542485604884314097, guid: 7900b58e74e39054d81121e53fbc9e04, type: 3}
       propertyPath: m_IsActive
@@ -621,6 +621,10 @@ PrefabInstance:
     - target: {fileID: 2777006896077298128, guid: 7900b58e74e39054d81121e53fbc9e04, type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336557827858297810, guid: 7900b58e74e39054d81121e53fbc9e04, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 247
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7900b58e74e39054d81121e53fbc9e04, type: 3}
