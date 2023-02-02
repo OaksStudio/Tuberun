@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BotPuller : Puller
 {
-    public SOBotPuller PullerInfo;
+    public SOBotPuller _pullerInfo;
 
-    protected override void Setup(TuberRow tuberRow)
+    public override void Setup(SOPuller puller)
     {
-        base.Setup(tuberRow);
+        base.Setup(puller);
+        _pullerInfo = puller as SOBotPuller;
     }
 
     protected override void Initialize()

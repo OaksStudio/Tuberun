@@ -1,54 +1,45 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Jozi.Pools;
 using UnityEngine;
 
 public class Tuber : MonoBehaviour
 {
-    public SOTuber TuberInfo;
+    public int RowID => _rowID;
+    private int _rowID;
 
     [SerializeField] private List<Direction> _directions = new List<Direction>();
 
-    [SerializeField] private int CurrentDeepness => _currentDeepness;
-    [SerializeField] private int _currentDeepness;
+    [SerializeField] private float CurrentDeepness => _currentDeepness;
+    [SerializeField] private float _currentDeepness;
+
+    [SerializeField] private float MaxDeepness => _maxDeepness;
+    [SerializeField] private float _maxDeepness;
+
     [SerializeField] private int _nextDirectionInput;
 
-    public ControlMap controlMap;
+    private SOTuber _tuberInfo;
 
-    public Action OnPull, OnMiss, OnRelease = delegate { };
+    public Action OnPull, OnMiss = delegate { };
+    public Action<Tuber> OnRelease = delegate { };
 
-    private void Start()
+    public void Setup(int rowID, SOTuber tuberInfo)
     {
-        Setup(TuberInfo);
-
-        controlMap.OnKeyDown += CheckDirection;
-    }
-
-    private void OnDestroy()
-    {
-        controlMap.OnKeyDown -= CheckDirection;
-    }
-
-    private void Update()
-    {
-        controlMap.CheckKeyDown();
-    }
-
-    public void Setup(SOTuber tuberInfo)
-    {
-        _currentDeepness = TuberInfo.Deepness;
+        _rowID = rowID;
+        _currentDeepness = _maxDeepness = tuberInfo.Deepness;
         _directions = tuberInfo.directions;
         _nextDirectionInput = 0;
     }
 
-    private void CheckDirection(Direction direction)
+    public void TryPull(Direction direction, float pullForce)
     {
         Direction currentDir = _directions[_nextDirectionInput];
 
         if (currentDir == Direction.ANY || currentDir == direction)
         {
-            Pull(1);
-            Debug.Log($"Try Pull!");
+            Pull(pullForce);
+            Debug.Log($"Pulled!");
 
             _nextDirectionInput++;
             if (_nextDirectionInput >= _directions.Count)
@@ -63,24 +54,28 @@ public class Tuber : MonoBehaviour
         }
     }
 
-    public void Pull(int pullValue)
+    private void Pull(float pullForce)
     {
         if (_currentDeepness <= 0) return;
 
-        _currentDeepness -= pullValue;
+        _currentDeepness -= pullForce;
 
-        OnPull?.Invoke();
 
         if (_currentDeepness <= 0)
         {
             Release();
+        }
+        else
+        {
+            OnPull?.Invoke();
         }
     }
 
     public void Release()
     {
         Debug.Log($"Released!");
-        OnRelease?.Invoke();
+        OnRelease?.Invoke(this);
+        PoolCommand.ReleaseObject(gameObject);
     }
 
 }

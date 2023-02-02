@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class SOPuller : ScriptableObject
 {
+    public string PullerName = "Puller";
     public float PullForce = 1;
 }

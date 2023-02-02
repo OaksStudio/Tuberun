@@ -5,34 +5,35 @@ using UnityEngine;
 
 public class PlayerPuller : Puller
 {
-    public SOPlayerPuller PullerInfo;
-
+    private SOPlayerPuller _pullerInfo;
     private ControlMap _controlMap;
 
-    protected override void Setup(TuberRow tuberRow)
+    public override void Setup(SOPuller puller)
     {
-        base.Setup(tuberRow);
+        base.Setup(puller);
+        _pullerInfo = puller as SOPlayerPuller;
+        _controlMap = _pullerInfo.ControlMap;
+        _pullerInfo.ControlMap.OnKeyDown += ProcessPull;
     }
 
     protected override void Initialize()
     {
-        PullerInfo.ControlMap.OnKeyDown += ProcessPull;
-        _controlMap = PullerInfo.ControlMap;
+
     }
 
     private void ProcessPull(Direction direction)
     {
-        OnPull?.Invoke(direction, PullerInfo.PullForce);
+        OnPull?.Invoke(direction, _pullerInfo.PullForce);
     }
 
     protected override void Process()
     {
-        PullerInfo.ControlMap.CheckKeyDown();
+        _pullerInfo.ControlMap.CheckKeyDown();
     }
 
     private void OnDestroy()
     {
-        PullerInfo.ControlMap.OnKeyDown -= ProcessPull;
+        _pullerInfo.ControlMap.OnKeyDown -= ProcessPull;
     }
 
 }

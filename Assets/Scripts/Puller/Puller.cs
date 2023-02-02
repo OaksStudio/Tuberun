@@ -7,9 +7,13 @@ public abstract class Puller : MonoBehaviour
 {
     public Action<Direction, float> OnPull = delegate { };
 
-    public TuberRow TuberRow => _tuberRow;
+    public Action OnStop, OnDisable = delegate { };
 
-    private TuberRow _tuberRow;
+    public bool Stopped => _stopped;
+    private bool _stopped;
+
+    public bool Disabled => _stopped;
+    private bool _disabled;
 
     protected void Awake()
     {
@@ -18,15 +22,28 @@ public abstract class Puller : MonoBehaviour
 
     protected void Update()
     {
+        if (_disabled || _stopped) return;
         Process();
     }
 
-    protected virtual void Setup(TuberRow tuberRow)
+    public virtual void Setup(SOPuller puller)
     {
-        _tuberRow = tuberRow;
+        _disabled = _stopped = false;
     }
 
     protected abstract void Initialize();
 
     protected abstract void Process();
+
+    public void Stop()
+    {
+        _stopped = true;
+        OnStop?.Invoke();
+    }
+
+    public void Disable()
+    {
+        _disabled = true;
+        OnDisable?.Invoke();
+    }
 }
