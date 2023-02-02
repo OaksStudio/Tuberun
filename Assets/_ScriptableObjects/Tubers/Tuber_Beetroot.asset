@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01217981fa8a12b428808fb6d4ffe91d, type: 3}
-  m_Name: Tuber_Carrot
+  m_Name: Tuber_Beetroot
   m_EditorClassIdentifier: 
   Deepness: 25
   directions: 04000000
