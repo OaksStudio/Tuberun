@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54ca3fb5b2b8d740aac4f028887fdc5, type: 3}
   m_Name: SO_Player_2_Puller
   m_EditorClassIdentifier: 
+  PullerName: Player 2
   PullForce: 1
   _controlMap:
     KeysMapped:

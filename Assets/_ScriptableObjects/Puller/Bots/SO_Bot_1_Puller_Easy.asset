@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb4a519e0199dc4b9e486e5475281e8, type: 3}
   m_Name: SO_Bot_1_Puller_Easy
   m_EditorClassIdentifier: 
+  PullerName: Bot
   PullForce: 1
   Accuracy: 0.2
