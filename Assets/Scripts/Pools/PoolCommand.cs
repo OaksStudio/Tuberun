@@ -50,16 +50,21 @@ namespace Jozi.Pools
 
         private void WarmPool(GameObject prefab, int poolSize)
         {
+            int poolInitialLength = 0;
             if (!pooledObjects.ContainsKey(prefab.GetInstanceID()))
             {
                 pooledObjects.Add(prefab.GetInstanceID(), new List<GameObject>());
+            }
+            else
+            {
+                poolInitialLength = pooledObjects[prefab.GetInstanceID()].Count;
             }
 
             for (int i = 0; i < poolSize; i++)
             {
                 var newObject = Instantiate(prefab);
                 pooledObjects[prefab.GetInstanceID()].Add(newObject);
-                pooledObjects[prefab.GetInstanceID()][i].SetActive(false);
+                pooledObjects[prefab.GetInstanceID()][i + poolInitialLength].SetActive(false);
                 objectsAvailability.Add(newObject.GetInstanceID(), true);
             }
         }

@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tuber
+  - Harvester
   layers:
   - Default
   - TransparentFX
@@ -11,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Tuber
+  - Harvester
   - 
   - 
   - 
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: Tuber
     uniqueID: 1936260489
+    locked: 0
+  - name: Harvester
+    uniqueID: 2364971833
     locked: 0
   - name: Frontground
     uniqueID: 896943677
