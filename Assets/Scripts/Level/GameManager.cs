@@ -2,28 +2,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Jozi.Utilities.Patterns;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager>
 {
     public static List<SOPuller> SelectedCompetitors = new List<SOPuller>();
 
     public List<Puller> Pullers => _pullers;
+    public GameMode GameMode => _gameMode;
+
+    public UnityEvent OnWonEvent, OnLoseEvent;
 
     [Header("Default Info")]
     public List<SOPuller> Competitors = new List<SOPuller>();
     public List<SOTuber> MatchTubers = new List<SOTuber>();
 
-    [Header("Setup")]
-    [SerializeField] private GameMode GameMode;
-    [SerializeField] private List<Puller> _pullers = new List<Puller>();
+    [Header("Hidden")]
+    [SerializeField, ReadOnly] private GameMode _gameMode;
+    [SerializeField, ReadOnly] private List<Puller> _pullers = new List<Puller>();
 
     public Action<SOPuller> OnWon;
     public Action OnLost;
 
     private void Start()
     {
-        GameMode = FindObjectOfType<GameMode>();
+        _gameMode = FindObjectOfType<GameMode>();
 
         foreach (var competitor in Competitors)
         {
@@ -46,9 +51,9 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
-        GameMode.Setup(MatchTubers);
-        GameMode.OnOneWins += Won;
-        GameMode.OnAllLost += Losted;
+        _gameMode.Setup(MatchTubers);
+        _gameMode.OnOneWins += Won;
+        _gameMode.OnAllLost += Losted;
     }
 
     private void Won(int pullerIndex)

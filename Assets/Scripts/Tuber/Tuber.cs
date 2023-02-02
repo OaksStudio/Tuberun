@@ -2,34 +2,44 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Jozi.Pools;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Tuber : MonoBehaviour
 {
     public int RowID => _rowID;
-    private int _rowID;
+    public SOTuber TuberInfo => _tuberInfo;
+    public float CurrentDeepness => _currentDeepness;
+    public float MaxDeepness => _maxDeepness;
 
-    [SerializeField] private List<Direction> _directions = new List<Direction>();
+    [ReadOnly, SerializeField] private int _rowID;
+    [ReadOnly, SerializeField] private List<Direction> _directions = new List<Direction>();
+    [ReadOnly, SerializeField] private float _currentDeepness;
+    [ReadOnly, SerializeField] private float _maxDeepness;
+    [ReadOnly, SerializeField] private int _nextDirectionInput;
+    [ReadOnly, SerializeField] private SOTuber _tuberInfo;
 
-    [SerializeField] private float CurrentDeepness => _currentDeepness;
-    [SerializeField] private float _currentDeepness;
-
-    [SerializeField] private float MaxDeepness => _maxDeepness;
-    [SerializeField] private float _maxDeepness;
-
-    [SerializeField] private int _nextDirectionInput;
-
-    private SOTuber _tuberInfo;
-
-    public Action OnPull, OnMiss = delegate { };
+    public Action OnPull, OnMiss, OnStop, OnSetup = delegate { };
     public Action<Tuber> OnRelease = delegate { };
+
+    private BoxCollider2D _boxCollider;
+    private bool _stopped = false;
+
+    private void Awake()
+    {
+        _boxCollider = GetComponent<BoxCollider2D>();
+    }
 
     public void Setup(int rowID, SOTuber tuberInfo)
     {
         _rowID = rowID;
+        _tuberInfo = tuberInfo;
         _currentDeepness = _maxDeepness = tuberInfo.Deepness;
         _directions = tuberInfo.directions;
         _nextDirectionInput = 0;
+        _boxCollider.enabled = true;
+        _stopped = false;
+        OnSetup?.Invoke();
     }
 
     public void TryPull(Direction direction, float pullForce)
@@ -54,6 +64,12 @@ public class Tuber : MonoBehaviour
         }
     }
 
+    public void StopTuber()
+    {
+        _stopped = true;
+        OnStop?.Invoke();
+    }
+
     private void Pull(float pullForce)
     {
         if (_currentDeepness <= 0) return;
@@ -73,6 +89,7 @@ public class Tuber : MonoBehaviour
 
     public void Release()
     {
+        _boxCollider.enabled = false;
         Debug.Log($"Released!");
         OnRelease?.Invoke(this);
         PoolCommand.ReleaseObject(gameObject);

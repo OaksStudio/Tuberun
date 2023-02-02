@@ -23,6 +23,7 @@ public class TuberRow : MonoBehaviour
     private Queue<Tuber> _tubers;
     private long _currentSlot = 0;
     private Tuber _selectedTuber;
+    private bool _stoppedRow;
 
     public Action OnClearRow;
     public Action<Tuber> OnReleaseTuber;
@@ -44,11 +45,14 @@ public class TuberRow : MonoBehaviour
         }
 
         GameManager.Instance.Pullers[ID].OnPull += TryPullerPull;
+        GameManager.Instance.GameMode.OnEnd += StopRow;
+
+        _stoppedRow = false;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.Pullers[ID].OnPull -= TryPullerPull;
+         GameManager.Instance.GameMode.OnEnd -= StopRow;
     }
 
     private void GenerateTuber(List<SOTuber> tubers)
@@ -61,6 +65,11 @@ public class TuberRow : MonoBehaviour
     {
         Tuber tuber = PoolCommand.GetObject(TuberPrefab).GetComponent<Tuber>();
         tuber.Setup(ID, tubers);
+
+        if (_stoppedRow)
+        {
+            tuber.StopTuber();
+        }
 
         _tubers.Enqueue(tuber);
 
@@ -98,6 +107,22 @@ public class TuberRow : MonoBehaviour
     private void TryPullerPull(Direction direction, float pullForce)
     {
         GetTuber().TryPull(direction, pullForce);
+    }
+
+
+    private void StopRow()
+    {
+        if (_stoppedRow) return;
+        _stoppedRow = true;
+
+        _selectedTuber?.StopTuber();
+
+        for (int i = 0; i < _tubers.Count; i++)
+        {
+            Tuber tuber = _tubers.Dequeue();
+            tuber.StopTuber();
+            _tubers.Enqueue(tuber);
+        }
     }
 
 #if UNITY_EDITOR

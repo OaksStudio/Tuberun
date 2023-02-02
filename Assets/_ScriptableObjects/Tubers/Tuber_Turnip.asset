@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Tuber_Turnip
   m_EditorClassIdentifier: 
   Deepness: 25
-  directions: 04000000
+  BodyColor: {r: 0.9960785, g: 0.93725497, b: 0.8196079, a: 1}
+  directions: 0000000001000000

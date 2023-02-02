@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Tuber_Beetroot
   m_EditorClassIdentifier: 
   Deepness: 25
-  directions: 04000000
+  BodyColor: {r: 0.5882353, g: 0.21176472, b: 0.43529415, a: 1}
+  directions: 0300000002000000

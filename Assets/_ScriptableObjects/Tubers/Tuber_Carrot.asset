@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Tuber_Carrot
   m_EditorClassIdentifier: 
   Deepness: 25
+  BodyColor: {r: 1, g: 0.62352943, b: 0.24313727, a: 1}
   directions: 04000000
