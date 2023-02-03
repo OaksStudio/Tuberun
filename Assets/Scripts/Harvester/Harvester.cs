@@ -10,6 +10,8 @@ public class Harvester : MonoBehaviour
     public SOString TuberTag;
     public float MoveTowardsSpeed = 1;
 
+    public float CurrentSpeed => _currentSpeed;
+
     public Action<int> OnHarvest;
     public Action OnStop;
 
@@ -30,6 +32,7 @@ public class Harvester : MonoBehaviour
     {
         if (_stopped) return;
         _stopped = true;
+        _currentSpeed = 0;
         OnStop?.Invoke();
     }
 

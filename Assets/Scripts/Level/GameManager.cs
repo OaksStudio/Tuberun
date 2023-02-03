@@ -30,23 +30,22 @@ public class GameManager : Singleton<GameManager>
     {
         _gameMode = FindObjectOfType<GameMode>();
 
-        foreach (var competitor in Competitors)
+        for (int i = 0; i < Competitors.Count; i++)
         {
             GameObject pullerHolder = new GameObject();
             pullerHolder.transform.parent = transform;
-            if (competitor is SOPlayerPuller playerPuller)
+            if (Competitors[i] is SOPlayerPuller playerPuller)
             {
-
                 pullerHolder.name = $"P_{playerPuller.name}";
                 PlayerPuller puller = pullerHolder.AddComponent<PlayerPuller>();
-                puller.Setup(playerPuller);
+                puller.Setup(i, playerPuller);
                 _pullers.Add(puller);
             }
-            else if (competitor is SOBotPuller botPuller)
+            else if (Competitors[i] is SOBotPuller botPuller)
             {
                 pullerHolder.name = $"B_{botPuller.name}";
                 BotPuller puller = pullerHolder.AddComponent<BotPuller>();
-                puller.Setup(botPuller);
+                puller.Setup(i, botPuller);
                 _pullers.Add(puller);
             }
         }

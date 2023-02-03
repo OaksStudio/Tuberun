@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PullerName: Bot
   PullForce: 1
-  Accuracy: 0.2
+  CooldownRange: {x: 0.05, y: 0.08}
+  Accuracy: 40

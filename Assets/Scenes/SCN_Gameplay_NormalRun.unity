@@ -1234,6 +1234,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: _GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2120731404221571625, guid: 357bafd7efdcc184bb7cff7023e43fc9, type: 3}
+      propertyPath: Competitors.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b7405d6ff3e0fbe4bb4aecb958a95fad, type: 2}
+    - target: {fileID: 2120731404221571625, guid: 357bafd7efdcc184bb7cff7023e43fc9, type: 3}
+      propertyPath: Competitors.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6eb611a96ec911e4da54e9ca993e143c, type: 2}
     - target: {fileID: 2120731404221571630, guid: 357bafd7efdcc184bb7cff7023e43fc9, type: 3}
       propertyPath: m_RootOrder
       value: 1
