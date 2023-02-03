@@ -74,6 +74,7 @@ public abstract class GameMode : MonoBehaviour
         {
             if (TuberRows[i].Clear)
             {
+                EndProcedure();
                 OnOneWins?.Invoke(i);
                 return;
             }
