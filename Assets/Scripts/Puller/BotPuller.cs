@@ -5,11 +5,15 @@ using UnityEngine;
 public class BotPuller : Puller
 {
     public SOBotPuller _pullerInfo;
+    private TuberRow _tuberRow;
 
-    public override void Setup(SOPuller puller)
+    public float _timeStamp;
+
+    public override void Setup(int id, SOPuller puller)
     {
-        base.Setup(puller);
+        base.Setup(id, puller);
         _pullerInfo = puller as SOBotPuller;
+        _tuberRow = GameManager.Instance.GameMode.TuberRows[id];
     }
 
     protected override void Initialize()
@@ -19,6 +23,20 @@ public class BotPuller : Puller
 
     protected override void Process()
     {
+        if (_timeStamp > Time.time) return;
+        if (!_tuberRow.GetTuber()) return;
 
+        Direction correctDirection = _tuberRow.GetTuber().GetCorrectDirection();
+
+        float random = Random.Range(0, _pullerInfo.MaxAccuracy);
+        Direction randomDirection = random < _pullerInfo.Accuracy ? correctDirection : Direction.NONE;
+
+        _timeStamp = Time.time + Random.Range(_pullerInfo.CooldownRange.x, _pullerInfo.CooldownRange.y);
+        ProcessPull(randomDirection);
+    }
+
+    private void ProcessPull(Direction direction)
+    {
+        OnPull?.Invoke(direction, _pullerInfo.PullForce);
     }
 }

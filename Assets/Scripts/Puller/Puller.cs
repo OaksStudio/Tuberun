@@ -5,6 +5,10 @@ using UnityEngine;
 
 public abstract class Puller : MonoBehaviour
 {
+
+    public int ID => _ID;
+    private int _ID;
+
     public Action<Direction, float> OnPull = delegate { };
 
     public Action OnStop, OnDisable = delegate { };
@@ -26,8 +30,9 @@ public abstract class Puller : MonoBehaviour
         Process();
     }
 
-    public virtual void Setup(SOPuller puller)
+    public virtual void Setup(int id, SOPuller puller)
     {
+        _ID = id;
         _disabled = _stopped = false;
     }
 

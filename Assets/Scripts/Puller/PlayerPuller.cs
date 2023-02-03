@@ -8,9 +8,9 @@ public class PlayerPuller : Puller
     private SOPlayerPuller _pullerInfo;
     private ControlMap _controlMap;
 
-    public override void Setup(SOPuller puller)
+    public override void Setup(int id, SOPuller puller)
     {
-        base.Setup(puller);
+        base.Setup(id, puller);
         _pullerInfo = puller as SOPlayerPuller;
         _controlMap = _pullerInfo.ControlMap;
         _pullerInfo.ControlMap.OnKeyDown += ProcessPull;

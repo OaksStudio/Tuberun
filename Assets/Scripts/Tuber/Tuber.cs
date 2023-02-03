@@ -44,6 +44,8 @@ public class Tuber : MonoBehaviour
 
     public void TryPull(Direction direction, float pullForce)
     {
+        if (direction == Direction.NONE) return;
+
         Direction currentDir = _directions[_nextDirectionInput];
 
         if (currentDir == Direction.ANY || currentDir == direction)
@@ -60,6 +62,11 @@ public class Tuber : MonoBehaviour
         {
             OnMiss?.Invoke();
         }
+    }
+
+    public Direction GetCorrectDirection()
+    {
+        return _directions[_nextDirectionInput];
     }
 
     public void StopTuber()

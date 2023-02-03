@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Jozi.Pools;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public enum FarmType { Limited, Continuous }
@@ -19,10 +20,11 @@ public class TuberRow : MonoBehaviour
     public float RowOffset = 1;
 
     public bool Clear => _tubers.Count <= 0 && _selectedTuber == null;
+    public Tuber SelectedTuber => _selectedTuber;
 
     private Queue<Tuber> _tubers;
     private long _currentSlot = 0;
-    private Tuber _selectedTuber;
+    [ReadOnly, SerializeField] private Tuber _selectedTuber;
     private bool _stoppedRow;
 
     public Action OnClearRow;
@@ -51,7 +53,7 @@ public class TuberRow : MonoBehaviour
 
     private void OnDestroy()
     {
-         GameManager.Instance.Pullers[ID].OnPull -= TryPullerPull;
+        GameManager.Instance.Pullers[ID].OnPull -= TryPullerPull;
     }
 
     private void GenerateTuber(List<SOTuber> tubers)
@@ -78,7 +80,7 @@ public class TuberRow : MonoBehaviour
         _currentSlot++;
     }
 
-    private Tuber GetTuber()
+    public Tuber GetTuber()
     {
         if (_selectedTuber) return _selectedTuber;
 
