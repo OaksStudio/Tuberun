@@ -49,7 +49,6 @@ public class Tuber : MonoBehaviour
         if (currentDir == Direction.ANY || currentDir == direction)
         {
             Pull(pullForce);
-            Debug.Log($"Pulled!");
 
             _nextDirectionInput++;
             if (_nextDirectionInput >= _directions.Count)
@@ -60,7 +59,6 @@ public class Tuber : MonoBehaviour
         else
         {
             OnMiss?.Invoke();
-            Debug.Log($"Missed!");
         }
     }
 
@@ -73,9 +71,7 @@ public class Tuber : MonoBehaviour
     private void Pull(float pullForce)
     {
         if (_currentDeepness <= 0) return;
-
         _currentDeepness -= pullForce;
-
 
         if (_currentDeepness <= 0)
         {
@@ -90,7 +86,6 @@ public class Tuber : MonoBehaviour
     public void Release()
     {
         _boxCollider.enabled = false;
-        Debug.Log($"Released!");
         OnRelease?.Invoke(this);
         PoolCommand.ReleaseObject(gameObject);
     }

@@ -15,7 +15,7 @@ public abstract class GameMode : MonoBehaviour
     public List<Harvester> Harvesters = new List<Harvester>();
 
     public Action<int> OnOneWins;
-    public Action OnAllLost, OnEnd;
+    public Action OnAllLost;
 
     public virtual void Setup(List<SOTuber> tubers)
     {
@@ -37,6 +37,7 @@ public abstract class GameMode : MonoBehaviour
 
         GameManager.Instance.Pullers[pullerIndex].Stop();
         Harvesters[pullerIndex].StopHarvester();
+        TuberRows[pullerIndex].StopRow();
 
         bool allStopped = true;
         for (int i = 0; i < GameManager.Instance.Pullers.Count; i++)
@@ -49,8 +50,21 @@ public abstract class GameMode : MonoBehaviour
 
         if (allStopped)
         {
-            OnEnd?.Invoke();
+            EndProcedure();
             OnAllLost?.Invoke();
+        }
+    }
+
+    private void EndProcedure()
+    {
+        for (int i = 0; i < TuberRows.Count; i++)
+        {
+            TuberRows[i].StopRow();
+        }
+
+        foreach (var harvester in Harvesters)
+        {
+            harvester.StopHarvester();
         }
     }
 
@@ -60,7 +74,6 @@ public abstract class GameMode : MonoBehaviour
         {
             if (TuberRows[i].Clear)
             {
-                OnEnd?.Invoke();
                 OnOneWins?.Invoke(i);
                 return;
             }

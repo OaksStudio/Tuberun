@@ -45,14 +45,13 @@ public class TuberRow : MonoBehaviour
         }
 
         GameManager.Instance.Pullers[ID].OnPull += TryPullerPull;
-        GameManager.Instance.GameMode.OnEnd += StopRow;
 
         _stoppedRow = false;
     }
 
     private void OnDestroy()
     {
-         GameManager.Instance.GameMode.OnEnd -= StopRow;
+         GameManager.Instance.Pullers[ID].OnPull -= TryPullerPull;
     }
 
     private void GenerateTuber(List<SOTuber> tubers)
@@ -110,7 +109,7 @@ public class TuberRow : MonoBehaviour
     }
 
 
-    private void StopRow()
+    public void StopRow()
     {
         if (_stoppedRow) return;
         _stoppedRow = true;
