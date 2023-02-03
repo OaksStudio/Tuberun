@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
-
 [CreateAssetMenu(fileName = "SO_Harvester", menuName = "Harvester", order = 2)]
 public class SOHarvester : ScriptableObject
 {
