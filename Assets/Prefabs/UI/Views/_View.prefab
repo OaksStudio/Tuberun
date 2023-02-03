@@ -147,10 +147,10 @@ MonoBehaviour:
   DisableOnExit: 0
   EnterSettings: {fileID: 11400000, guid: ee7b9edb102d9be49bcb15bb2957878c, type: 2}
   ExitSettings: {fileID: 11400000, guid: ee7b9edb102d9be49bcb15bb2957878c, type: 2}
-  ViewReferences:
-    ViewRectTransform: {fileID: 1832643606091842529}
-    ViewGroup: {fileID: 5726669246317715987}
-  EventSystem: {fileID: 0}
+  _viewReferences:
+    ViewRectTransform: {fileID: 0}
+    ViewGroup: {fileID: 0}
+  _eventSystem: {fileID: 0}
 --- !u!225 &5726669246317715987
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -236,15 +236,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5093006382817728738, guid: aebc1ef01a1463545b87958fef75ccc4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5093006382817728738, guid: aebc1ef01a1463545b87958fef75ccc4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5093006382817728738, guid: aebc1ef01a1463545b87958fef75ccc4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5093006382817728738, guid: aebc1ef01a1463545b87958fef75ccc4, type: 3}
       propertyPath: m_AnchoredPosition.x

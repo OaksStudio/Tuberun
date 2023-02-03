@@ -36,7 +36,7 @@ namespace MonsterWhaser.Utilities.Views
         protected void Awake()
         {
             InitStart();
-
+            _buttons.ForEach(b => b.interactable = false);
         }
 
         protected virtual void InitStart()
@@ -89,7 +89,6 @@ namespace MonsterWhaser.Utilities.Views
                 _eventSystem = EventSystem.current;
 
             _buttons = GetComponentsInChildren<Button>().ToList();
-            _buttons.ForEach(b => b.interactable = false);
         }
 
         protected bool CanExecuteAnimation()
