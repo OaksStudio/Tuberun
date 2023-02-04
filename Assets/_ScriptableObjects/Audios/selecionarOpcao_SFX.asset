@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7af1dd1e3e44aab478c532d6e696b4ef, type: 3}
-  m_Name: plantaEsticando_SFX
+  m_Name: selecionarOpcao_SFX
   m_EditorClassIdentifier: 
   Clip:
-  - {fileID: 8300000, guid: cac28652addbc0c4dac2a927f15ee0c3, type: 3}
-  - {fileID: 8300000, guid: 71f421b88510c9e4e8266404ffa9f6ab, type: 3}
+  - {fileID: 8300000, guid: 519c3a361db317944abbb320802930ff, type: 3}
   Volume: 1
   Pitch: 1
   Loop: 0
-  RandomizePitch: 1
-  MinPitch: 0.8
-  MaxPitch: 1.5
+  RandomizePitch: 0
+  MinPitch: 1
+  MaxPitch: 1
   _mixer: {fileID: 6166285590997748971, guid: 686478a767fc89741a76162009a68040, type: 2}

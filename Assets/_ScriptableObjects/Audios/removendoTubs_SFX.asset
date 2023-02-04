@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7af1dd1e3e44aab478c532d6e696b4ef, type: 3}
-  m_Name: Gameplay_Music
+  m_Name: removendoTubs_SFX
   m_EditorClassIdentifier: 
   Clip:
-  - {fileID: 8300000, guid: b0b4f05ed3eeb3f46a37839006025125, type: 3}
+  - {fileID: 8300000, guid: 35088eb3bd6ad6040aaaffd9fa11766a, type: 3}
+  - {fileID: 8300000, guid: 81cc3c2d0506bcd4c96cc11ba20676c0, type: 3}
+  - {fileID: 8300000, guid: 0039142d792502e44b7d725243f502ac, type: 3}
   Volume: 1
   Pitch: 1
-  Loop: 1
+  Loop: 0
   RandomizePitch: 0
   MinPitch: 1
   MaxPitch: 1
-  _mixer: {fileID: 135095290749635821, guid: 37d9cc0b1a3765f42be18fd7096ee051, type: 2}
+  _mixer: {fileID: 6166285590997748971, guid: 686478a767fc89741a76162009a68040, type: 2}
