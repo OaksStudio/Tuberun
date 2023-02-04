@@ -9,7 +9,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Linq;
 
-namespace MonsterWhaser.Utilities.Views
+namespace OAKS.Utilities.Views
 {
     public class ViewBase : MonoBehaviour
     {

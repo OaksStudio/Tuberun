@@ -17,7 +17,8 @@ public class ControlMap
     {
         public KeyCode KeyCode;
         [FormerlySerializedAs("Direction")] public InputActions InputAction;
-        public Sprite Icon;
+        public Sprite ReleaseIcon;
+        public Sprite PressedIcon;
     }
 
     public void CheckKeyDown(List<InputActions> actionsFilter)

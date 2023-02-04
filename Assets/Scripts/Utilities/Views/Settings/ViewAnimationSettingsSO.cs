@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MonsterWhaser.Utilities.Views
+namespace OAKS.Utilities.Views
 {
     public enum Direction { NONE, UP, RIGHT, DOWN, LEFT }
     public enum AnimationKind { IN, OUT }

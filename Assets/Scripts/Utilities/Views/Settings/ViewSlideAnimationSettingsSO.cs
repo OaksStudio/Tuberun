@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MonsterWhaser.Utilities.Views
+namespace OAKS.Utilities.Views
 {
     [CreateAssetMenu(menuName = "Views/Animations Settings/Slide", fileName = "ANIM_SLD_Default_SO")]
     public class ViewSlideAnimationSettingsSO : ViewAnimationSettingsSO
