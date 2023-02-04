@@ -17,7 +17,7 @@ public class SOAudio : ScriptableObject
     [SerializeField, Range(-3, 3)] private float MinPitch = 1f;
     [SerializeField, Range(-3, 3)] private float MaxPitch = 1f;
 
-    public AudioMixerGroup Mixer;
+    [SerializeField] private AudioMixerGroup Mixer;
 
     public void Setup(ref AudioSource audioSource)
     {

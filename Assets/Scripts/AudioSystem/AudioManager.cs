@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using Jozi.Utilities.Patterns;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : Singleton<AudioManager>
 {
+    [Header("Setup")]
+    [SerializeField] private AudioCommand Music;
+    [SerializeField] private AudioCommand Ambience;
 
-    public SOAudio InitialMusic;
-    public SOAudio InitialAmbience;
+    [SerializeField] private AudioMixerGroup MusicMixer;
+    [SerializeField] private AudioMixerGroup SoundEffectMixer;
 
-    public AudioCommand Music;
-    public AudioCommand Ambience;
+    [Header("Initialize")]
+    [SerializeField] private SOAudio InitialMusic;
+    [SerializeField] private SOAudio InitialAmbience;
 
     private void Start()
     {
-        if (InitialMusic) PlayMusic(InitialMusic);
-        if (InitialAmbience) PlayAmbience(InitialAmbience);
+        PlayMusic(InitialMusic);
+        PlayAmbience(InitialAmbience);
     }
 
     public void PlayMusic(SOAudio audio)
@@ -26,5 +32,17 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayAmbience(SOAudio audio)
     {
         Ambience.Play(audio);
+    }
+
+    [Button]
+    public void PlayMusic()
+    {
+        if (InitialMusic) PlayMusic(InitialMusic);
+    }
+
+    [Button]
+    public void PlayAmbience()
+    {
+        if (InitialAmbience) PlayAmbience(InitialAmbience);
     }
 }

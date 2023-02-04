@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioCommand : MonoBehaviour
 {
     [SerializeField] private SOAudio _audio;
     private AudioSource _audioSource;
 
-    private void Awake()
-    {
-        Setup(_audio);
-    }
-
     public void Setup(SOAudio audio)
     {
         if (!_audioSource) _audioSource = GetComponent<AudioSource>();
-        if (!_audio) return;
-
+        if (audio == null) return;
         _audio = audio;
         _audio.Setup(ref _audioSource);
+    }
+
+    [Button]
+    public void Setup()
+    {
+        Setup(_audio);
     }
 
     [Button]
@@ -31,8 +32,10 @@ public class AudioCommand : MonoBehaviour
     [Button]
     public void Play(SOAudio audio)
     {
-        _audioSource.pitch = audio.GetPitch();
-        _audioSource.clip = audio.GetClip();
+        Setup(audio);
+        if (_audio == null) return;
+        _audioSource.pitch = _audio.GetPitch();
+        _audioSource.clip = _audio.GetClip();
         _audioSource.Play();
     }
 }
