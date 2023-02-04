@@ -453,10 +453,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2524889176599796924, guid: 38917bfc363ac1d40ab57f40ecce0a85, type: 3}
-      propertyPath: holder
-      value: 
-      objectReference: {fileID: 418216300}
     - target: {fileID: 2524889176599796925, guid: 38917bfc363ac1d40ab57f40ecce0a85, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -505,21 +501,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: _LoadingManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3434374233784690854, guid: 38917bfc363ac1d40ab57f40ecce0a85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462056146339204698, guid: 38917bfc363ac1d40ab57f40ecce0a85, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38917bfc363ac1d40ab57f40ecce0a85, type: 3}
---- !u!1 &418216300 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4459248946644666284, guid: 38917bfc363ac1d40ab57f40ecce0a85, type: 3}
-  m_PrefabInstance: {fileID: 418216299}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &457119911
 PrefabInstance:
   m_ObjectHideFlags: 0

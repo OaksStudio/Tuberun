@@ -7,7 +7,7 @@ public class BotPuller : Puller
     public SOBotPuller _pullerInfo;
     private TuberRow _tuberRow;
 
-    public float _timeStamp;
+    private float _timeStamp;
 
     public override void Setup(int id, SOPuller puller)
     {
