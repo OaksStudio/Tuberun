@@ -17,13 +17,17 @@ public class SOAudio : ScriptableObject
     [SerializeField, Range(-3, 3)] private float MinPitch = 1f;
     [SerializeField, Range(-3, 3)] private float MaxPitch = 1f;
 
-    [SerializeField] private AudioMixerGroup Mixer;
+    public AudioMixerGroup Mixer => _mixer;
+    [SerializeField] private AudioMixerGroup _mixer;
 
     public void Setup(ref AudioSource audioSource)
     {
         audioSource.volume = Volume;
         audioSource.pitch = Pitch;
-        audioSource.outputAudioMixerGroup = Mixer;
+        audioSource.outputAudioMixerGroup = _mixer;
+#if UNITY_EDITOR
+        if (!_mixer) Debug.Log($"<color='red'>The Audio {name} does note have and mixer attached!</color>");
+#endif
         audioSource.loop = Loop;
     }
 

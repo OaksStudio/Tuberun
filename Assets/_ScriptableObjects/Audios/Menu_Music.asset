@@ -20,4 +20,4 @@ MonoBehaviour:
   RandomizePitch: 0
   MinPitch: 1
   MaxPitch: 1
-  Mixer: {fileID: 24300002, guid: 37d9cc0b1a3765f42be18fd7096ee051, type: 2}
+  _mixer: {fileID: 135095290749635821, guid: 37d9cc0b1a3765f42be18fd7096ee051, type: 2}
