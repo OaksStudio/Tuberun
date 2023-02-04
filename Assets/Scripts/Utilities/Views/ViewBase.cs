@@ -6,6 +6,8 @@ using Sirenix.OdinInspector;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using System.Linq;
 
 namespace MonsterWhaser.Utilities.Views
 {
@@ -26,12 +28,15 @@ namespace MonsterWhaser.Utilities.Views
         [SerializeField] protected ViewAnimationSettingsSO ExitSettings;
 
         [Header("References")]
-        [SerializeField] protected ViewReferences ViewReferences;
-        [SerializeField] protected EventSystem EventSystem;
+        [SerializeField] protected ViewReferences _viewReferences;
+        [SerializeField] protected EventSystem _eventSystem;
 
-        protected void Start()
+        private List<Button> _buttons = new List<Button>();
+
+        protected void Awake()
         {
             InitStart();
+            _buttons.ForEach(b => b.interactable = false);
         }
 
         protected virtual void InitStart()
@@ -43,23 +48,26 @@ namespace MonsterWhaser.Utilities.Views
         {
             if (!CanExecuteAnimation()) return;
             OnPreAnimateEnter?.Invoke();
-            ExitSettings.TryAdjustParemeter(ViewReferences);
-            EnterSettings.Animate(ViewReferences, AnimationKind.IN, DisableOnExit, OnAnimateEnter);
+            ExitSettings.TryAdjustParemeter(_viewReferences);
+            EnterSettings.Animate(_viewReferences, AnimationKind.IN, DisableOnExit, OnAnimateEnter);
             SetSelected();
+            _buttons.ForEach(b => b.interactable = true);
         }
 
         public virtual void SetSelected()
         {
             if (FocusItem == null) return;
-            EventSystem.SetSelectedGameObject(FocusItem);
+
+            _eventSystem.SetSelectedGameObject(FocusItem);
         }
 
         public virtual void OnExit()
         {
             if (!CanExecuteAnimation()) return;
             OnPreAnimateExit?.Invoke();
-            EnterSettings.TryAdjustParemeter(ViewReferences);
-            ExitSettings.Animate(ViewReferences, AnimationKind.OUT, DisableOnExit, OnAnimateExit);
+            EnterSettings.TryAdjustParemeter(_viewReferences);
+            ExitSettings.Animate(_viewReferences, AnimationKind.OUT, DisableOnExit, OnAnimateExit);
+            _buttons.ForEach(b => b.interactable = false);
         }
 
         protected void Reset()
@@ -71,14 +79,16 @@ namespace MonsterWhaser.Utilities.Views
         [Button]
         protected void TryGetReferences()
         {
-            if (!ViewReferences.ViewRectTransform)
-                TryGetComponent(out ViewReferences.ViewRectTransform);
+            if (!_viewReferences.ViewRectTransform)
+                TryGetComponent(out _viewReferences.ViewRectTransform);
 
-            if (!ViewReferences.ViewGroup)
-                TryGetComponent(out ViewReferences.ViewGroup);
+            if (!_viewReferences.ViewGroup)
+                TryGetComponent(out _viewReferences.ViewGroup);
 
-            if (!EventSystem)
-                EventSystem = EventSystem.current;
+            if (!_eventSystem)
+                _eventSystem = EventSystem.current;
+
+            _buttons = GetComponentsInChildren<Button>().ToList();
         }
 
         protected bool CanExecuteAnimation()

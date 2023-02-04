@@ -30,6 +30,11 @@ namespace MonsterWhaser.Utilities.Views
                 controller = GetComponentInParent<ViewMenuController>();
         }
 
+        private void Start()
+        {
+            Reset();
+        }
+
         protected override void OnClickButton()
         {
             base.OnClickButton();
@@ -50,7 +55,7 @@ namespace MonsterWhaser.Utilities.Views
 
         private void GetMenuController()
         {
-            controller = GetComponentInParent<ViewMenuController>();
+            if (!controller) controller = GetComponentInParent<ViewMenuController>();
         }
 
         private void Reset()
@@ -62,10 +67,20 @@ namespace MonsterWhaser.Utilities.Views
 
         private void TryGetView()
         {
-            var view = GetComponentInParent<ViewBase>();
+            GetMenuController();
 
-            if (view && !View)
-                View = view;
+            ViewBase viewBase = null;
+            if (!string.IsNullOrEmpty(ViewToCall))
+            {
+                viewBase = controller.GetViewById(ViewToCall);
+            }
+
+            if (!viewBase) viewBase = GetComponentInParent<ViewBase>();
+
+            if (viewBase && !View)
+            {
+                View = viewBase;
+            }
 
             if (View)
             {

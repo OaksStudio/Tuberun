@@ -5,18 +5,22 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Jozi.Utilities.Patterns;
+using MonsterWhaser.Utilities.Views;
 
 namespace Jozi.Level
 {
     public class LevelLoaderManager : Singleton<LevelLoaderManager>
     {
         [Header("Setup")]
-        public GameObject holder;
         public Animator Animator;
         public string TriggerName = "start";
         public float TransitionTime = 2;
         public string NextLevel;
         public Slider LoadSlider;
+
+        [Header("View")]
+        public ViewBase View;
+        public ViewMenuController ViewController;
 
         public void LoadNextLevel()
         {
@@ -45,9 +49,7 @@ namespace Jozi.Level
 
         private IEnumerator LoadLevelCO(string sceneName)
         {
-            //Animator.gameObject.SetActive(true);
-            //Animator?.SetTrigger(TriggerName);
-            holder.SetActive(true);
+            ViewController.PushView(View);
             yield return new WaitForSeconds(TransitionTime);
 
             StartCoroutine(LoadAsynchrously(sceneName));
@@ -63,7 +65,7 @@ namespace Jozi.Level
                 yield return null;
             }
 
-            holder.SetActive(false);
+            ViewController.PopView();
         }
     }
 }

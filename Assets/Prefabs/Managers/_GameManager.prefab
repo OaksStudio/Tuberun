@@ -52,7 +52,7 @@ MonoBehaviour:
       m_Calls: []
   Competitors:
   - {fileID: 11400000, guid: 0d00f38c548c03c49a230146f2e927ee, type: 2}
-  - {fileID: 11400000, guid: 2b05134f950fe7b42bfaf89863451c79, type: 2}
+  - {fileID: 11400000, guid: 6eb611a96ec911e4da54e9ca993e143c, type: 2}
   MatchTubers:
   - {fileID: 11400000, guid: 37121bb20b484aa4684816db203191d8, type: 2}
   - {fileID: 11400000, guid: 86e1b9c15ea4a994fb0496d762352fa6, type: 2}

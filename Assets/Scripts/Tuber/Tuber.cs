@@ -71,6 +71,7 @@ public class Tuber : MonoBehaviour
 
     public void StopTuber()
     {
+        if (_stopped) return;
         _stopped = true;
         OnStop?.Invoke();
     }

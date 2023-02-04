@@ -16,16 +16,21 @@ namespace MonsterWhaser.Utilities.Views
         [ShowInInspector]
         private Stack<ViewBase> _viewsStack = new Stack<ViewBase>();
 
-        private void Start()
+        private void Awake()
         {
             Init();
+        }
+
+        private void Start()
+        {
+            if (InitialView == null) return;
+            PushView(InitialView);
         }
 
         private void Init()
         {
             GetAllViews();
-            if (InitialView == null) return;
-            PushView(InitialView);
+
         }
 
         public void PushView(ViewBase view)
@@ -58,9 +63,9 @@ namespace MonsterWhaser.Utilities.Views
 
             var popPage = _viewsStack.Pop();
             popPage.OnExit();
-          
+
             if (_viewsStack.Count == 0) return;
-       
+
             var currentPage = _viewsStack.Peek();
 
             if (currentPage.ExitOnNewViewPush)
@@ -106,7 +111,7 @@ namespace MonsterWhaser.Utilities.Views
             return IsViewOnStack(viewId) && _viewsStack.Peek().Equals(GetViewById(viewId));
         }
 
-        private ViewBase GetViewById(string viewId)
+        public ViewBase GetViewById(string viewId)
         {
             return Views.Find(v => v.ViewId == viewId);
         }
