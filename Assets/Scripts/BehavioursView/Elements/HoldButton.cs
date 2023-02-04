@@ -10,6 +10,8 @@ public class HoldButton : MonoBehaviour
     [Header("Setup")]
     [SerializeField] private Image ReleasedIcon;
     [SerializeField] private Image PressedIcon;
+
+    [SerializeField] private bool _changeFillers = true;
     [SerializeField] private List<Image> ReleasedFillers = new List<Image>();
     [SerializeField] private List<Image> PressedFillers = new List<Image>();
 
@@ -38,14 +40,21 @@ public class HoldButton : MonoBehaviour
 
         ReleasedIcon.sprite = map.ReleaseIcon;
         PressedIcon.sprite = map.PressedIcon;
-        ReleasedFillers.ForEach(f => f.sprite = map.ReleaseIcon);
-        PressedFillers.ForEach(f => f.sprite = map.PressedIcon);
+
+        if (_changeFillers)
+        {
+            ReleasedFillers.ForEach(f => f.sprite = map.ReleaseIcon);
+            PressedFillers.ForEach(f => f.sprite = map.PressedIcon);
+        }
 
         ReleasedIcon.enabled = true;
-        ReleasedFillers.ForEach(f => f.enabled = true);
-
         PressedIcon.enabled = false;
-        PressedFillers.ForEach(f => f.enabled = false);
+
+        if (_changeFillers)
+        {
+            ReleasedFillers.ForEach(f => f.enabled = true);
+            PressedFillers.ForEach(f => f.enabled = false);
+        }
 
         Reset();
     }
@@ -66,10 +75,12 @@ public class HoldButton : MonoBehaviour
             if (!PressedIcon.enabled)
             {
                 ReleasedIcon.enabled = false;
-                ReleasedFillers.ForEach(f => f.enabled = false);
-
                 PressedIcon.enabled = true;
-                PressedFillers.ForEach(f => f.enabled = true);
+                if (_changeFillers)
+                {
+                    ReleasedFillers.ForEach(f => f.enabled = false);
+                    PressedFillers.ForEach(f => f.enabled = true);
+                }
             }
         }
         else
@@ -78,10 +89,13 @@ public class HoldButton : MonoBehaviour
             if (!ReleasedIcon.enabled)
             {
                 ReleasedIcon.enabled = true;
-                ReleasedFillers.ForEach(f => f.enabled = true);
-
                 PressedIcon.enabled = false;
-                PressedFillers.ForEach(f => f.enabled = false);
+
+                if (_changeFillers)
+                {
+                    PressedFillers.ForEach(f => f.enabled = false);
+                    ReleasedFillers.ForEach(f => f.enabled = true);
+                }
             }
         }
 
