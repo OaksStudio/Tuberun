@@ -27,11 +27,17 @@ public class HoldButton : MonoBehaviour
 
     public Action OnComplete;
 
-    private bool _completed;
+    private bool _completed, _active;
 
     private void Awake()
     {
         Setup(_currentMap);
+    }
+    
+    [Button]
+    public void Activate(bool value)
+    {
+        _active = value;
     }
 
     public void Setup(ControlMap.Map map)
@@ -68,7 +74,7 @@ public class HoldButton : MonoBehaviour
     {
         if (_completed && _stopOncompleted) return;
 
-        if (Input.GetKey(_currentMap.KeyCode))
+        if (Input.GetKey(_currentMap.KeyCode) && _active)
         {
             _currentProgress = Mathf.Clamp01(_currentProgress + _addSpeed * Time.deltaTime);
 

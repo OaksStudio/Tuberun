@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 2005638075220962366}
   - component: {fileID: 2005638075220962367}
   m_Layer: 5
-  m_Name: _HoldKeyButtom
+  m_Name: _HoldKeyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedPullersPreview: []
+  _defaultPlayers:
+  - {fileID: 11400000, guid: 0d00f38c548c03c49a230146f2e927ee, type: 2}
+  - {fileID: 11400000, guid: 2b05134f950fe7b42bfaf89863451c79, type: 2}
   MaxBotsDifficulties: 5
   DefaultDifficulty: 1
   BotPullers:

@@ -15,6 +15,9 @@ public class CharacterSelect : Singleton<CharacterSelect>
     [ReadOnly] public List<SOPuller> SelectedPullersPreview;
 #endif
 
+    public List<SOPlayerPuller> DefaultPlayers => _defaultPlayers;
+    [SerializeField] private List<SOPlayerPuller> _defaultPlayers = new List<SOPlayerPuller>();
+
     public enum Difficulty { EASY = 0, NORMAL = 1, MEDIUM = 2, HARD = 3, INSANE = 4 }
 
     [Header("Bot Setups"), Range(0, 5)]

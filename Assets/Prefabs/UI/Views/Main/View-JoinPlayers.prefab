@@ -290,13 +290,35 @@ PrefabInstance:
       propertyPath: _viewReferences.ViewRectTransform
       value: 
       objectReference: {fileID: 1592506682658210315}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8826817468922376269, guid: 3e87c4730be7a1b479a0c754337ce863, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3e87c4730be7a1b479a0c754337ce863, type: 3}
 --- !u!224 &1592506681995321477 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1832643605949178223, guid: 3e87c4730be7a1b479a0c754337ce863, type: 3}
   m_PrefabInstance: {fileID: 1114469133085934058}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1592506682658210308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1832643606091842542, guid: 3e87c4730be7a1b479a0c754337ce863, type: 3}
+  m_PrefabInstance: {fileID: 1114469133085934058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6746795144177080246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592506682658210308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217256835c60deb46b88b94b87534328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CancelReturn: 1
+  _viewMenuController: {fileID: 0}
+  Competitor_1: {fileID: 0}
+  Competitor_2: {fileID: 0}
 --- !u!224 &1592506682658210315 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1832643606091842529, guid: 3e87c4730be7a1b479a0c754337ce863, type: 3}
