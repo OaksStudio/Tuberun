@@ -20,23 +20,28 @@ namespace MonsterWhaser.Utilities.Views
         public GameObject FocusItem;
         [PropertyOrder(2)]
         [FoldoutGroup("Events")]
-        public UnityEvent OnPreAnimateEnter, OnAnimateEnter, OnPreAnimateExit, OnAnimateExit;
+        public UnityEvent OnPreAnimateEnter, OnAnimateEnter, OnPreAnimateExit, OnAnimateExit, OnStacked, OnUnstacked;
 
         [Header("Animation")]
         [SerializeField] protected bool DisableOnExit;
         [SerializeField] protected ViewAnimationSettingsSO EnterSettings;
         [SerializeField] protected ViewAnimationSettingsSO ExitSettings;
 
+        [Header("Setup")]
+        [SerializeField] protected bool DisableButtonsOnStack = true;
         [Header("References")]
         [SerializeField] protected ViewReferences _viewReferences;
         [SerializeField] protected EventSystem _eventSystem;
 
-        private List<Button> _buttons = new List<Button>();
+        [ReadOnly, SerializeField] private List<Button> _buttons = new List<Button>();
+        private RectTransform _rectTransform;
+        private Coroutine _buttonProcedureCO;
 
         protected void Awake()
         {
             InitStart();
-            _buttons.ForEach(b => b.interactable = false);
+            _rectTransform = transform.GetComponent<RectTransform>();
+            ButtonsActivation(false);
         }
 
         protected virtual void InitStart()
@@ -51,7 +56,19 @@ namespace MonsterWhaser.Utilities.Views
             ExitSettings.TryAdjustParemeter(_viewReferences);
             EnterSettings.Animate(_viewReferences, AnimationKind.IN, DisableOnExit, OnAnimateEnter);
             SetSelected();
-            _buttons.ForEach(b => b.interactable = true);
+            ButtonsActivation(true);
+        }
+
+        public virtual void OnStack()
+        {
+            OnStacked?.Invoke();
+            if (DisableButtonsOnStack) ButtonsActivation(false);
+        }
+
+        public virtual void OnUnstack()
+        {
+            OnUnstacked?.Invoke();
+            if (DisableButtonsOnStack) ButtonsActivation(true);
         }
 
         public virtual void SetSelected()
@@ -67,7 +84,37 @@ namespace MonsterWhaser.Utilities.Views
             OnPreAnimateExit?.Invoke();
             EnterSettings.TryAdjustParemeter(_viewReferences);
             ExitSettings.Animate(_viewReferences, AnimationKind.OUT, DisableOnExit, OnAnimateExit);
-            _buttons.ForEach(b => b.interactable = false);
+            ButtonsActivation(false);
+        }
+
+        private void ButtonsActivation(bool value)
+        {
+            if (_buttonProcedureCO != null)
+            {
+                StopCoroutine(_buttonProcedureCO);
+                _buttonProcedureCO = null;
+            }
+            _buttonProcedureCO = StartCoroutine(ButtonsActivationCO(value));
+        }
+
+        private IEnumerator ButtonsActivationCO(bool value)
+        {
+            if (value)
+            {
+                Activation(value);
+                yield break;
+            }
+            yield return new WaitForSeconds(0.1f);
+            Activation(value);
+        }
+
+        private void Activation(bool value)
+        {
+            _buttons.ForEach(b =>
+            {
+                b.interactable = value;
+                b.enabled = value;
+            });
         }
 
         protected void Reset()
