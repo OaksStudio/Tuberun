@@ -22,7 +22,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Hidden")]
     [SerializeField, ReadOnly] private GameMode _gameMode;
     [SerializeField, ReadOnly] private List<Puller> _pullers = new List<Puller>();
-
+    
     public Action<SOPuller> OnWon;
     public Action OnLost;
 
@@ -78,5 +78,3 @@ public class GameManager : Singleton<GameManager>
     }
 
 }
-
-public enum Direction { UP = 0, DOWN = 1, RIGHT = 2, LEFT = 3, ANY = 4, NONE = 5 }

@@ -17,10 +17,14 @@ MonoBehaviour:
   _controlMap:
     KeysMapped:
     - KeyCode: 119
-      Direction: 0
+      InputAction: 0
     - KeyCode: 115
-      Direction: 1
+      InputAction: 1
     - KeyCode: 97
-      Direction: 3
+      InputAction: 3
     - KeyCode: 100
-      Direction: 2
+      InputAction: 2
+    - KeyCode: 32
+      InputAction: 6
+    - KeyCode: 27
+      InputAction: 7

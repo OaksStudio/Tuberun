@@ -105,7 +105,7 @@ public class TuberRow : MonoBehaviour
         }
     }
 
-    private void TryPullerPull(Direction direction, float pullForce)
+    private void TryPullerPull(InputActions direction, float pullForce)
     {
         GetTuber().TryPull(direction, pullForce);
     }

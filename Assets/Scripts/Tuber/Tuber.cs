@@ -12,8 +12,9 @@ public class Tuber : MonoBehaviour
     public float CurrentDeepness => _currentDeepness;
     public float MaxDeepness => _maxDeepness;
 
+
     [ReadOnly, SerializeField] private int _rowID;
-    [ReadOnly, SerializeField] private List<Direction> _directions = new List<Direction>();
+    [ReadOnly, SerializeField] private List<InputActions> _directions = new List<InputActions>();
     [ReadOnly, SerializeField] private float _currentDeepness;
     [ReadOnly, SerializeField] private float _maxDeepness;
     [ReadOnly, SerializeField] private int _nextDirectionInput;
@@ -42,13 +43,13 @@ public class Tuber : MonoBehaviour
         OnSetup?.Invoke();
     }
 
-    public void TryPull(Direction direction, float pullForce)
+    public void TryPull(InputActions direction, float pullForce)
     {
-        if (direction == Direction.NONE) return;
+        if (direction == InputActions.NONE) return;
 
-        Direction currentDir = _directions[_nextDirectionInput];
+        InputActions currentDir = _directions[_nextDirectionInput];
 
-        if (currentDir == Direction.ANY || currentDir == direction)
+        if (currentDir == InputActions.ANY || currentDir == direction)
         {
             Pull(pullForce);
 
@@ -64,7 +65,7 @@ public class Tuber : MonoBehaviour
         }
     }
 
-    public Direction GetCorrectDirection()
+    public InputActions GetCorrectDirection()
     {
         return _directions[_nextDirectionInput];
     }

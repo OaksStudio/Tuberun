@@ -10,7 +10,7 @@ public class SOTuber : ScriptableObject
     public Color BodyColor = Color.white;
 
     [Header("Input Sequence")]
-    public List<Direction> directions = new List<Direction>() { Direction.ANY };
+    public List<InputActions> directions = new List<InputActions>() { InputActions.ANY };
 
 }
 
