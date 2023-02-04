@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af1dd1e3e44aab478c532d6e696b4ef, type: 3}
+  m_Name: gritinhoAoSair_SFX
+  m_EditorClassIdentifier: 
+  Clip:
+  - {fileID: 8300000, guid: 2b28a32636c976c4d803cd03d66e269c, type: 3}
+  - {fileID: 8300000, guid: f347c6d58f2c4284f90c09b0bd4b625a, type: 3}
+  - {fileID: 8300000, guid: 0b8256ddc6952804199a2eae4b42f4da, type: 3}
+  Volume: 1
+  Pitch: 1
+  Loop: 0
+  RandomizePitch: 0
+  MinPitch: 1
+  MaxPitch: 1
+  _mixer: {fileID: 6166285590997748971, guid: 686478a767fc89741a76162009a68040, type: 2}
