@@ -38,6 +38,7 @@ public class TuberView : MonoBehaviour
     {
         if (!_tuber.TuberInfo) return;
         //MainBody.color = _tuber.TuberInfo.BodyColor;
+        Model.transform.position = DeeperPosition.position;
     }
 
     [Button]
