@@ -96,6 +96,7 @@ public class GameManager : Singleton<GameManager>
         PauseManager.Instance.CanPause = false;
         DisablePullers();
         OnWon?.Invoke(Competitors[pullerIndex]);
+        OnWonEvent?.Invoke();
     }
 
     [Button]
@@ -104,6 +105,7 @@ public class GameManager : Singleton<GameManager>
         PauseManager.Instance.CanPause = false;
         DisablePullers();
         OnLost?.Invoke();
+        OnLoseEvent?.Invoke();
     }
 
     private void DisablePullers()
