@@ -7,5 +7,11 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AMT_Nabo
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 948a00676cd9a7d4bb357fd50ef58d59, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d3d781639285d1a4fb7a9c0d8478ff80, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4d55b25b4fe556b4e84978cfa3b8926f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dd0c228ce4bfbcd438734d75003071bb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8ef6cb9680fa40349b55e2cade40d24e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5013ab0651854a842ad6f82d1705caf2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f4ad2ce9729c1384a90f4970ceffb26a, type: 2}
