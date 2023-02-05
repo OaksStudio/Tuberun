@@ -453,6 +453,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CancelReturn: 1
+  CancelEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3051997522043108924}
+        m_TargetAssemblyTypeName: AudioCommand, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _viewMenuController: {fileID: 0}
   StartPointText: 'SCORE '
   EndPointText: 
@@ -464,6 +479,17 @@ MonoBehaviour:
   - {fileID: 3478211566710193816}
   PauseView: {fileID: 0}
   PauseCooldown: 0.2
+--- !u!114 &3051997522043108924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1882356184964831948, guid: 3e87c4730be7a1b479a0c754337ce863, type: 3}
+  m_PrefabInstance: {fileID: 3478370358192956656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5222070a44c98b042a04cbc7960fe535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!225 &9168361544927217379 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 5726669246317715987, guid: 3e87c4730be7a1b479a0c754337ce863, type: 3}
