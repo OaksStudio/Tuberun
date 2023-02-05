@@ -83,13 +83,15 @@ public class CharacterSelectBehaviour : ViewBehaviour
 
     private void OnUnready(SOPuller puller)
     {
-        if (!Competitor_1.Ready && Competitor_2.SelectedSetup is SOBotPuller)
+        if (!Competitor_1.Ready && Competitor_2.SelectedSetup is SOBotPuller bot2)
         {
             Competitor_2.HoldLeaveFinished();
+            CharacterSelect.Instance.Remove(bot2);
         }
-        else if (!Competitor_2.Ready && Competitor_1.SelectedSetup is SOBotPuller)
+        else if (!Competitor_2.Ready && Competitor_1.SelectedSetup is SOBotPuller bot1)
         {
             Competitor_1.HoldLeaveFinished();
+            CharacterSelect.Instance.Remove(bot1);
         }
     }
 
@@ -136,15 +138,35 @@ public class CharacterSelectBehaviour : ViewBehaviour
         {
             if (Competitor_1.Ready || Competitor_2.Ready)
             {
-                if (Competitor_1.Ready) Competitor_1.HoldLeaveFinished();
-                if (Competitor_2.Ready) Competitor_2.HoldLeaveFinished();
+                if (Competitor_1.Ready)
+                {
+                    SOPuller lastSelected = Competitor_1.SelectedSetup;
+                    Competitor_1.HoldLeaveFinished();
+                    if (lastSelected is SOBotPuller) CharacterSelect.Instance.Remove(lastSelected);
+                }
+                if (Competitor_2.Ready)
+                {
+                    SOPuller lastSelected = Competitor_2.SelectedSetup;
+                    Competitor_2.HoldLeaveFinished();
+                    if (lastSelected is SOBotPuller) CharacterSelect.Instance.Remove(lastSelected);
+                }
                 return;
             }
 
             if (Competitor_1.Joined || Competitor_2.Joined)
             {
-                if (Competitor_1.Joined) Competitor_1.HoldLeaveFinished();
-                if (Competitor_2.Joined) Competitor_2.HoldLeaveFinished();
+                if (Competitor_1.Joined)
+                {
+                    SOPuller lastSelected = Competitor_1.SelectedSetup;
+                    Competitor_1.HoldLeaveFinished();
+                    if (lastSelected is SOBotPuller) CharacterSelect.Instance.Remove(lastSelected);
+                }
+                if (Competitor_2.Joined)
+                {
+                    SOPuller lastSelected = Competitor_2.SelectedSetup;
+                    Competitor_2.HoldLeaveFinished();
+                    if (lastSelected is SOBotPuller) CharacterSelect.Instance.Remove(lastSelected);
+                }
                 return;
             }
 
