@@ -33,11 +33,15 @@ public class HoldButton : MonoBehaviour
     {
         Setup(_currentMap);
     }
-    
+
     [Button]
     public void Activate(bool value)
     {
         _active = value;
+        if (!value)
+        {
+            Reset();
+        }
     }
 
     public void Setup(ControlMap.Map map)
@@ -67,6 +71,8 @@ public class HoldButton : MonoBehaviour
 
     public void Reset()
     {
+        _currentProgress = 0;
+        Progress(_currentProgress);
         _completed = false;
     }
 

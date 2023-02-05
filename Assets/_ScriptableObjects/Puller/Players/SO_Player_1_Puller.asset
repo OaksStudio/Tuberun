@@ -33,14 +33,14 @@ MonoBehaviour:
       InputAction: 2
       ReleaseIcon: {fileID: 21300000, guid: 5b5fce07234f4974d9ab6d5d29ed4019, type: 3}
       PressedIcon: {fileID: 21300000, guid: 7be1c040730ab5c41ba63c2be92c2490, type: 3}
-    - KeyCode: 305
-      InputAction: 0
-      ReleaseIcon: {fileID: 21300000, guid: 5797cb98437322e4889438302b4b47cd, type: 3}
-      PressedIcon: {fileID: 21300000, guid: 5278b4273227902468800a97b8c5a805, type: 3}
     - KeyCode: 32
       InputAction: 6
       ReleaseIcon: {fileID: 21300000, guid: ff2624cea1359b343981241fa4486e25, type: 3}
       PressedIcon: {fileID: 21300000, guid: 0cc0510c74c154e468b0f9e1c5d00eb6, type: 3}
+    - KeyCode: 306
+      InputAction: 6
+      ReleaseIcon: {fileID: 21300000, guid: 064ad443f79f5bc4f8abc82e53de102e, type: 3}
+      PressedIcon: {fileID: 21300000, guid: 1aa4488ff651ce646a34ee9f487c464c, type: 3}
     - KeyCode: 27
       InputAction: 7
       ReleaseIcon: {fileID: 21300000, guid: 897469c5574662b45b7a71a427b5bac6, type: 3}

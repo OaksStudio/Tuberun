@@ -12,7 +12,6 @@ public class CompetitorView : MonoBehaviour
     public SOPlayerPuller defaultSetup;
     public RectTransform JoinHolder;
     public List<PressButton> JoinImages = new List<PressButton>();
-
     [Header("Joined Setup")]
     public TextMeshProUGUI CompetitorName;
     public RectTransform ConfirmHolder;
@@ -23,7 +22,7 @@ public class CompetitorView : MonoBehaviour
 
     public Action<SOPuller> OnJoin, OnReady, OnUnready, OnUnJoin;
 
-    private bool _joined, _ready;
+    [SerializeField, ReadOnly] private bool _joined, _ready;
     private List<ControlMap.Map> _maps = new List<ControlMap.Map>();
 
     private SOPuller selectedSetup;
@@ -62,7 +61,6 @@ public class CompetitorView : MonoBehaviour
     private void JoinedProcedure()
     {
         if (_joined) return;
-
         SetConfirmSetup(defaultSetup);
         OnJoin?.Invoke(defaultSetup);
         _joined = true;
@@ -71,18 +69,19 @@ public class CompetitorView : MonoBehaviour
         JoinImages[1].Activate(false);
     }
 
-    public void RemoveJoinSetup()
+    private void RemoveJoinSetup()
     {
         JoinHolder.gameObject.SetActive(false);
     }
     #endregion
 
     #region  READY
+    [Button]
     public void SetConfirmSetup(SOPuller puller)
     {
         RemoveJoinSetup();
 
-        CompetitorName.text = puller.name;
+        CompetitorName.text = puller.PullerName;
         CompetitorName.color = puller.PullerColor;
 
         selectedSetup = puller;
@@ -93,6 +92,9 @@ public class CompetitorView : MonoBehaviour
 
             ConfirmReady.Activate(false);
             HoldLeaveJoin.Activate(false);
+
+            _ready = true;
+            _joined = true;
 
             OnReady?.Invoke(puller);
         }
@@ -110,37 +112,47 @@ public class CompetitorView : MonoBehaviour
 
 
     [Button]
-    public void RemoveConfirmSetup(SOPuller puller)
+    private void RemoveConfirmSetup(SOPuller puller)
     {
         ConfirmHolder.gameObject.SetActive(false);
         CompetitorName.text = "";
         ConfirmReady.Activate(false);
         HoldLeaveJoin.Activate(false);
-        HoldLeaveJoin.Reset();
     }
 
     private void ReadyProcedure()
     {
+        if (!_joined || _ready) return;
+
         ConfirmReady.Activate(false);
         ConfirmReadyHolder.gameObject.SetActive(false);
         ConfirmBack.gameObject.SetActive(true);
 
         OnReady?.Invoke(selectedSetup);
-        _ready = true;
     }
 
+    public void OnReadyBlock()
+    {
+        HoldLeaveJoin.Activate(false);
+    }
+
+    public void OnReadyUnblock()
+    {
+        HoldLeaveJoin.Activate(false);
+    }
 
     #endregion
 
     #region LEAVE
     [Button]
-    private void HoldLeaveFinished()
+    public void HoldLeaveFinished()
     {
-        if (_joined)
+        if (_joined && !_ready)
         {
             OnUnJoin?.Invoke(selectedSetup);
             _joined = false;
             RemoveConfirmSetup(selectedSetup);
+            SetJoinSetup(defaultSetup);
             selectedSetup = null;
             return;
         }
@@ -150,15 +162,20 @@ public class CompetitorView : MonoBehaviour
             if (selectedSetup is SOBotPuller botPuller)
             {
                 RemoveConfirmSetup(selectedSetup);
+                SetJoinSetup(defaultSetup);
+                _joined = false;
+                selectedSetup = null;
             }
             else if (selectedSetup is SOPlayerPuller playerPuller)
             {
                 ConfirmReady.Activate(true);
-                ConfirmReadyHolder.gameObject.SetActive(false);
+                ConfirmReadyHolder.gameObject.SetActive(true);
+                HoldLeaveJoin.Reset();
+                SetConfirmSetup(selectedSetup);
             }
             OnUnready?.Invoke(selectedSetup);
             ConfirmBack.gameObject.SetActive(false);
-            selectedSetup = null;
+            _ready = false;
             return;
         }
     }
