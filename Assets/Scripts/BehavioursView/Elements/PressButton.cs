@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PressButton : MonoBehaviour
@@ -10,7 +11,7 @@ public class PressButton : MonoBehaviour
     [Header("Setup")]
     [SerializeField] private Image ReleasedIcon;
     [SerializeField] private Image PressedIcon;
-
+    public UnityEvent OnPress, OnRelease;
     [Header("Hidden")]
     [SerializeField] private ControlMap.Map _currentMap;
 
@@ -50,6 +51,7 @@ public class PressButton : MonoBehaviour
             }
             if (Input.GetKeyDown(_currentMap.KeyCode))
             {
+                OnPress?.Invoke();
                 OnButtonDown?.Invoke();
             }
         }
@@ -62,6 +64,7 @@ public class PressButton : MonoBehaviour
             }
             if (Input.GetKeyUp(_currentMap.KeyCode))
             {
+                OnRelease?.Invoke();
                 OnButtonUp?.Invoke();
             }
         }

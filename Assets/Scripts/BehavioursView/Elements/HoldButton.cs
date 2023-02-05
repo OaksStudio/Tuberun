@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class HoldButton : MonoBehaviour
@@ -10,7 +11,7 @@ public class HoldButton : MonoBehaviour
     [Header("Setup")]
     [SerializeField] private Image ReleasedIcon;
     [SerializeField] private Image PressedIcon;
-
+    public UnityEvent OnPressEvent, OnReleaseEvent, OnHoldEvent, OnUnHoldEvent, OnCompleteEvent;
     [SerializeField] private bool _changeFillers = true;
     [SerializeField] private List<Image> ReleasedFillers = new List<Image>();
     [SerializeField] private List<Image> PressedFillers = new List<Image>();
@@ -83,11 +84,12 @@ public class HoldButton : MonoBehaviour
         if (Input.GetKey(_currentMap.KeyCode) && _active)
         {
             _currentProgress = Mathf.Clamp01(_currentProgress + _addSpeed * Time.deltaTime);
-
+            OnHoldEvent?.Invoke();
             if (!PressedIcon.enabled)
             {
                 ReleasedIcon.enabled = false;
                 PressedIcon.enabled = true;
+                OnPressEvent?.Invoke();
                 if (_changeFillers)
                 {
                     ReleasedFillers.ForEach(f => f.enabled = false);
@@ -98,11 +100,12 @@ public class HoldButton : MonoBehaviour
         else
         {
             _currentProgress = Mathf.Clamp01(_currentProgress - _removeSpeed * Time.deltaTime);
+            OnUnHoldEvent?.Invoke();
             if (!ReleasedIcon.enabled)
             {
                 ReleasedIcon.enabled = true;
                 PressedIcon.enabled = false;
-
+                OnReleaseEvent?.Invoke();
                 if (_changeFillers)
                 {
                     PressedFillers.ForEach(f => f.enabled = false);
@@ -117,6 +120,7 @@ public class HoldButton : MonoBehaviour
         {
             _completed = true;
             OnComplete?.Invoke();
+            OnCompleteEvent?.Invoke();
         }
     }
 
