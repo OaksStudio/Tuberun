@@ -99,7 +99,7 @@ public class ConfirmBotBehaviour : ViewBehaviour
 
     private void OnAdd()
     {
-        DifficultyText.text = CharacterSelect.Instance.SwitchBot(false).ToString();
+        DifficultyText.text = CharacterSelect.Instance.SwitchBot(true).ToString();
     }
 
     private void OnRemove()
