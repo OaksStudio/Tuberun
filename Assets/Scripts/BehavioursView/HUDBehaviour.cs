@@ -22,6 +22,15 @@ public class HUDBehaviour : ViewBehaviour
     {
         GameManager.Instance.OnAddPoint += AddPoint;
         GameManager.Instance.OnSetTime += SetTime;
+        foreach (var timer in Timers)
+        {
+            timer.SetTime(0, 0);
+        }
+
+        foreach (var point in Points)
+        {
+            point.text = $"{StartPointText}{0}{EndPointText}";
+        }
     }
 
     private void SetTime(int index)
