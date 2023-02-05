@@ -100,7 +100,7 @@ public class Tuber : MonoBehaviour
     {
         OnKill?.Invoke();
     }
-    
+
     [Button]
     private void Pull(float pullForce)
     {

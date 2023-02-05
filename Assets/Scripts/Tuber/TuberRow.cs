@@ -109,6 +109,7 @@ public class TuberRow : MonoBehaviour
 
     private void TryPullerPull(InputActions direction, float pullForce)
     {
+        if (PauseManager.Instance.IsPaused) return;
         GetTuber().TryPull(direction, pullForce);
     }
 
