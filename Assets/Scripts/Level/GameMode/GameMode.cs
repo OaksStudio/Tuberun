@@ -15,6 +15,8 @@ public abstract class GameMode : MonoBehaviour
 
     public List<Harvester> Harvesters = new List<Harvester>();
 
+    public List<Transform> TubersTarget = new List<Transform>();
+
     public Action<int> OnOneWins;
     public Action OnAllLost;
 
@@ -37,7 +39,6 @@ public abstract class GameMode : MonoBehaviour
         if (GameManager.Instance.Pullers[pullerIndex].Stopped) return;
 
         GameManager.Instance.Pullers[pullerIndex].Stop();
-        Harvesters[pullerIndex].StopHarvester();
         TuberRows[pullerIndex].StopRow();
 
         bool allStopped = true;

@@ -6,6 +6,8 @@ using UnityEngine;
 public class SOTuber : ScriptableObject
 {
     public int Deepness = 10;
+    public int PointsByPull = 10;
+    public int PointsByRelease = 50;
 
     public Color BodyColor = Color.white;
 

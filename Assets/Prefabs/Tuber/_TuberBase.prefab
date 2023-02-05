@@ -891,11 +891,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animator: {fileID: 0}
   Model: {fileID: 3815034382906605939}
   HoleMask: {fileID: 5634016086066089232}
   MainBody: {fileID: 0}
   DeeperPosition: {fileID: 6487770445590021883}
   SurfacePosition: {fileID: 3522574803630771422}
+  AlmostLeavingPoint: 0.8
+  PullTrigger: OnPull
+  MissTrigger: OnMiss
+  LeaveTrigger: OnLeave
+  DieTrigger: OnDie
+  AlmostLeavingBool: AlmostLeaving
+  RandomFloat: Random
 --- !u!1 &5634016086713755722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3815034382906605939}
+  - component: {fileID: 8599112982559026680}
   m_Layer: 0
   m_Name: VisualModel
   m_TagString: Untagged
@@ -1047,6 +1059,21 @@ Transform:
   m_Father: {fileID: 5634016086907365097}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8599112982559026680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5653647690064743956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eabd491c88fe6b4d8b15b8ed364f5b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  TargetPosition: {fileID: 0}
+  StartMoving: 0
 --- !u!1 &5844325796296656412
 GameObject:
   m_ObjectHideFlags: 0

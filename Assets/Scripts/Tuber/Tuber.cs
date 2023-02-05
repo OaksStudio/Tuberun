@@ -20,7 +20,11 @@ public class Tuber : MonoBehaviour
     [ReadOnly, SerializeField] private int _nextDirectionInput;
     [ReadOnly, SerializeField] private SOTuber _tuberInfo;
 
-    public Action OnPull, OnMiss, OnStop, OnSetup = delegate { };
+    [Header("Move")]
+    public MoveToPosition MoveToPosition;
+    public float DistanceToTarget = 2;
+
+    public Action OnPull, OnMiss, OnStop, OnSetup, OnKill = delegate { };
     public Action<Tuber> OnRelease = delegate { };
 
     private BoxCollider2D _boxCollider;
@@ -41,7 +45,17 @@ public class Tuber : MonoBehaviour
         _nextDirectionInput = 0;
         _boxCollider.enabled = true;
         _stopped = false;
+        MoveToPosition.TargetPosition = GameManager.Instance.GameMode.TubersTarget[rowID];
+        MoveToPosition.StartMoving = false;
         OnSetup?.Invoke();
+    }
+
+    private void Update()
+    {
+        if (MoveToPosition.StartMoving)
+        {
+            
+        }
     }
 
     public void TryPull(InputActions direction, float pullForce)
@@ -78,6 +92,11 @@ public class Tuber : MonoBehaviour
         OnStop?.Invoke();
     }
 
+    public void KillTuber()
+    {
+        OnKill?.Invoke();
+    }
+
     private void Pull(float pullForce)
     {
         if (_currentDeepness <= 0) return;
@@ -89,14 +108,20 @@ public class Tuber : MonoBehaviour
         }
         else
         {
+            GameManager.Instance.AddPoint(_tuberInfo.PointsByPull, _rowID);
             OnPull?.Invoke();
         }
     }
 
     public void Release()
     {
+        GameManager.Instance.AddPoint(_tuberInfo.PointsByRelease, _rowID);
         _boxCollider.enabled = false;
         OnRelease?.Invoke(this);
+    }
+
+    public void Reset()
+    {
         PoolCommand.ReleaseObject(gameObject);
     }
 

@@ -59,7 +59,9 @@ public class Harvester : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag != TuberTag.Value || _stopped) return;
-        OnHarvest?.Invoke(other.gameObject.GetComponent<Tuber>().RowID);
+        Tuber tuber = other.gameObject.GetComponent<Tuber>();
+        tuber.KillTuber();
+        OnHarvest?.Invoke(tuber.RowID);
         OnHarvestEvent?.Invoke();
     }
 }

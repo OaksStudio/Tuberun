@@ -9,9 +9,10 @@ using UnityEngine.Events;
 public class TuberView : MonoBehaviour
 {
     [Header("Events")]
-    public UnityEvent OnPulledEvent, OnReleasedEvent, OnMissEvent, OnStopEvent, OnResetEvent;
+    public UnityEvent OnPulledEvent, OnReleasedEvent, OnMissEvent, OnStopEvent, OnResetEvent, OnDieEvent;
 
     [Header("Model")]
+    public Animator animator;
     public Transform Model;
     public Transform HoleMask;
     public SpriteRenderer MainBody;
@@ -21,17 +22,28 @@ public class TuberView : MonoBehaviour
     public Transform DeeperPosition;
     public Transform SurfacePosition;
 
+    [Header("Animations")]
+    [Range(0, 1)] public float AlmostLeavingPoint = 0.8f;
+    public string PullTrigger = "OnPull";
+    public string MissTrigger = "OnMiss";
+    public string LeaveTrigger = "OnLeave";
+    public string DieTrigger = "OnDie";
+    public string AlmostLeavingBool = "AlmostLeaving";
+    public string RandomFloat = "Random";
+
     private Tuber _tuber;
 
     private void Awake()
     {
         _tuber = GetComponent<Tuber>();
+        if (!animator) animator = GetComponentInChildren<Animator>();
 
         _tuber.OnPull += PulledFeedback;
         _tuber.OnRelease += ReleasedFeedback;
         _tuber.OnMiss += MissedFeedback;
         _tuber.OnStop += StopFeedback;
         _tuber.OnSetup += Initialize;
+        _tuber.OnKill += Kill;
     }
 
     private void Initialize()
@@ -44,15 +56,29 @@ public class TuberView : MonoBehaviour
     [Button]
     private void PulledFeedback()
     {
+        animator.SetFloat(RandomFloat, UnityEngine.Random.Range(0f, 1f));
         PullPosition();
         OnPulledEvent?.Invoke();
+        animator.SetTrigger(PullTrigger);
     }
 
     [Button]
     private void PullPosition()
     {
-        Vector2 target = Vector2.Lerp(DeeperPosition.position, SurfacePosition.position, Mathf.InverseLerp(_tuber.MaxDeepness, 0, _tuber.CurrentDeepness));
+        float progress = Mathf.InverseLerp(_tuber.MaxDeepness, 0, _tuber.CurrentDeepness);
+        Vector2 target = Vector2.Lerp(DeeperPosition.position, SurfacePosition.position, progress);
         Model.transform.position = Vector2.MoveTowards(Model.transform.position, target, PullingSpeed * Time.deltaTime);
+
+        if (progress >= AlmostLeavingPoint)
+        {
+            if (!animator.GetBool(AlmostLeavingBool))
+                animator.SetBool(AlmostLeavingBool, true);
+        }
+        else
+        {
+            if (animator.GetBool(AlmostLeavingBool))
+                animator.SetBool(AlmostLeavingBool, false);
+        }
     }
 
     [Button]
@@ -65,6 +91,7 @@ public class TuberView : MonoBehaviour
     private void MissedFeedback()
     {
         OnMissEvent?.Invoke();
+        animator.SetTrigger(MissTrigger);
     }
 
     [Button]
@@ -77,6 +104,17 @@ public class TuberView : MonoBehaviour
     private void OnDisable()
     {
         Reset();
+    }
+
+    private void Kill()
+    {
+        animator.SetTrigger(DieTrigger);
+        OnDieEvent?.Invoke();
+    }
+
+    public void StartRunning()
+    {
+        
     }
 
     [Button]
