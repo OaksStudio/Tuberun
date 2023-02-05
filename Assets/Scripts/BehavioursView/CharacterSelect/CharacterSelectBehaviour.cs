@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using OAKS.Utilities.Views;
 
 public class CharacterSelectBehaviour : ViewBehaviour
 {
+    [Header("Next View")]
+    [SerializeField] protected string NextViewName = "View-SelectGameMode";
+    [SerializeField] private ViewBase NextView;
+    [Header("Setup")]
     public CompetitorView Competitor_1;
     public CompetitorView Competitor_2;
 
@@ -22,46 +27,62 @@ public class CharacterSelectBehaviour : ViewBehaviour
         Competitor_1.OnUnready += OnUnready;
         Competitor_2.OnReady += OnReady;
         Competitor_2.OnUnready += OnUnready;
+
+    }
+
+    private void Start()
+    {
+        if (NextView == null) NextView = _viewMenuController.GetViewById(NextViewName);
     }
 
     private void OnJoin(SOPuller puller)
     {
-        Debug.Log($"{puller.PullerName} Joined");
         CharacterSelect.Instance.Add(puller);
     }
 
     private void OnUnJoin(SOPuller puller)
     {
-        Debug.Log($"{puller.PullerName} Unjoined");
         CharacterSelect.Instance.Remove(puller);
     }
 
     private void OnReady(SOPuller puller)
     {
-        Debug.Log($"{puller.PullerName} is Ready!");
         if (CharacterSelect.Instance.SelectedPullersPreview.Count >= 2)
         {
-            if (Competitor_1.Ready && Competitor_2.Ready)
-            {
-                Debug.Log("Call next View!");
-            }
+            CheckAllReady();
         }
         else
         {
             if (Competitor_1.Ready && !Competitor_2.Ready)
             {
-                Competitor_2.SetConfirmSetup(CharacterSelect.Instance.GetBot());
+                SOBotPuller botPuller = CharacterSelect.Instance.GetBot();
+                Competitor_2.SetConfirmSetup(botPuller);
+                CharacterSelect.Instance.Add(botPuller);
             }
             else if (!Competitor_1.Ready && Competitor_2.Ready)
             {
+                SOBotPuller botPuller = CharacterSelect.Instance.GetBot();
                 Competitor_1.SetConfirmSetup(CharacterSelect.Instance.GetBot());
+                CharacterSelect.Instance.Add(botPuller);
             }
+
+            CheckAllReady();
+        }
+    }
+
+    private void CheckAllReady()
+    {
+        if (Competitor_1.Ready && Competitor_2.Ready)
+        {
+            if (NextView)
+                _viewMenuController.PushView(NextView);
+            else
+                _viewMenuController.PushView(NextViewName);
         }
     }
 
     private void OnUnready(SOPuller puller)
     {
-        if (puller) Debug.Log($"{puller.PullerName} become unready!");
         if (!Competitor_1.Ready && Competitor_2.SelectedSetup is SOBotPuller)
         {
             Competitor_2.HoldLeaveFinished();
@@ -113,6 +134,20 @@ public class CharacterSelectBehaviour : ViewBehaviour
 
         if (Input.GetButtonDown("Cancel"))
         {
+            if (Competitor_1.Ready || Competitor_2.Ready)
+            {
+                if (Competitor_1.Ready) Competitor_1.HoldLeaveFinished();
+                if (Competitor_2.Ready) Competitor_2.HoldLeaveFinished();
+                return;
+            }
+
+            if (Competitor_1.Joined || Competitor_2.Joined)
+            {
+                if (Competitor_1.Joined) Competitor_1.HoldLeaveFinished();
+                if (Competitor_2.Joined) Competitor_2.HoldLeaveFinished();
+                return;
+            }
+
             if (CancelReturn) _viewMenuController.PopView();
         }
     }

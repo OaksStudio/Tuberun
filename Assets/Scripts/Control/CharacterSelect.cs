@@ -84,9 +84,9 @@ public class CharacterSelect : Singleton<CharacterSelect>
     }
 
     [Button]
-    public void SwitchBot(bool right)
+    public Difficulty SwitchBot(bool right)
     {
-        if (!_selectedPullers.Exists(s => s is SOBotPuller)) return;
+        if (!_selectedPullers.Exists(s => s is SOBotPuller)) return DefaultDifficulty;
 
         int botIndex = _selectedPullers.FindIndex(s => s is SOBotPuller);
         BotsSetup botsSetup = BotPullers.Find(b => b.botPuller == (_selectedPullers[botIndex] as SOBotPuller));
@@ -113,6 +113,9 @@ public class CharacterSelect : Singleton<CharacterSelect>
 #if UNITY_EDITOR
         SelectedPullersPreview = _selectedPullers;
 #endif
+
+        return selectedDifficulty;
+
     }
 
     [Button]

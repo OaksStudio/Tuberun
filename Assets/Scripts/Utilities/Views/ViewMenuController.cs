@@ -33,6 +33,7 @@ namespace OAKS.Utilities.Views
 
         }
 
+        [Button]
         public void PushView(ViewBase view)
         {
             if (IsViewOnTop(view)) return;
@@ -55,6 +56,7 @@ namespace OAKS.Utilities.Views
             _viewsStack.Push(view);
         }
 
+        [Button]
         public void PushView(string viewId)
         {
             if (!IsViewOnStack(viewId)) return;
@@ -71,7 +73,7 @@ namespace OAKS.Utilities.Views
             if (_viewsStack.Count == 0) return;
 
             ViewBase currentPage = _viewsStack.Peek();
-        
+
             if (currentPage.ExitOnNewViewPush)
             {
                 currentPage.OnEnter();
