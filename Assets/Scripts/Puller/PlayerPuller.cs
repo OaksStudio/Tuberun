@@ -8,6 +8,8 @@ public class PlayerPuller : Puller
     private SOPlayerPuller _pullerInfo;
     private ControlMap _controlMap;
 
+    [SerializeField] private List<InputActions> _validPullActions = new List<InputActions>() { InputActions.UP, InputActions.DOWN, InputActions.LEFT, InputActions.RIGHT, InputActions.NONE, InputActions.ANY };
+
     public override void Setup(int id, SOPuller puller)
     {
         base.Setup(id, puller);
@@ -21,9 +23,10 @@ public class PlayerPuller : Puller
 
     }
 
-    private void ProcessPull(Direction direction)
+    private void ProcessPull(InputActions inputAction)
     {
-        OnPull?.Invoke(direction, _pullerInfo.PullForce);
+        if (!_validPullActions.Contains(inputAction)) return;
+        OnPull?.Invoke(inputAction, _pullerInfo.PullForce);
     }
 
     protected override void Process()

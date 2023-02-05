@@ -9,7 +9,7 @@ public abstract class Puller : MonoBehaviour
     public int ID => _ID;
     private int _ID;
 
-    public Action<Direction, float> OnPull = delegate { };
+    public Action<InputActions, float> OnPull = delegate { };
 
     public Action OnStop, OnDisable = delegate { };
 

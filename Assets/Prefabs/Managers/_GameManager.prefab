@@ -44,18 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 486df8226a9abed4f9246ff2831d3adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnWonEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLoseEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  Competitors:
+  DefaultCompetitors:
   - {fileID: 11400000, guid: 0d00f38c548c03c49a230146f2e927ee, type: 2}
-  - {fileID: 11400000, guid: 6eb611a96ec911e4da54e9ca993e143c, type: 2}
+  - {fileID: 11400000, guid: 0662c1d065aeff0419138850edf77f40, type: 2}
   MatchTubers:
   - {fileID: 11400000, guid: 37121bb20b484aa4684816db203191d8, type: 2}
   - {fileID: 11400000, guid: 86e1b9c15ea4a994fb0496d762352fa6, type: 2}
   - {fileID: 11400000, guid: 094a41922fa3e65418a9198a53c5e1d1, type: 2}
   _gameMode: {fileID: 0}
   _pullers: []
+  OnWonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLoseEvent:
+    m_PersistentCalls:
+      m_Calls: []
