@@ -48,6 +48,20 @@ public class AudioCommand : MonoBehaviour
         _audioSource.Play();
     }
 
+    [Button]
+    public void Stop()
+    {
+        Stop(_audio);
+    }
+
+    [Button]
+    public void Stop(SOAudio audio)
+    {
+        Setup(audio);
+        if (_audio == null) return;
+        _audioSource.Stop();
+    }
+
     private void OnDestroy()
     {
         AudioManager.OnMute -= MuteProcedure;
