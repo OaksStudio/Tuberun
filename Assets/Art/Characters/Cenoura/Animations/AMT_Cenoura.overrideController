@@ -7,5 +7,5 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AMT_Cenoura
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 948a00676cd9a7d4bb357fd50ef58d59, type: 2}
   m_Clips: []
