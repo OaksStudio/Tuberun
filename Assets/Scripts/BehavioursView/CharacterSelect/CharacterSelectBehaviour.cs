@@ -47,7 +47,7 @@ public class CharacterSelectBehaviour : ViewBehaviour
 
     private void OnReady(SOPuller puller)
     {
-        if (CharacterSelect.Instance.SelectedPullersPreview.Count >= 2)
+        if (CharacterSelect.SelectedCompetitors.Count >= 2)
         {
             CheckAllReady();
         }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class NormalRunMode : GameMode
 {
+
+    private float _initialTime;
+
     public override void Setup(List<SOTuber> tubers)
     {
         base.Setup(tubers);
@@ -13,6 +16,15 @@ public class NormalRunMode : GameMode
         {
             TuberRows[i].OnClearRow += EndGame;
         }
+        _initialTime = Time.time;
+        GameManager.Instance.SetTime(Time.time - _initialTime, 0);
+        GameManager.Instance.SetTime(Time.time - _initialTime, 1);
+    }
+
+    private void Update()
+    {
+        GameManager.Instance.SetTime(Time.time - _initialTime, 0);
+        GameManager.Instance.SetTime(Time.time - _initialTime, 1);
     }
 
     protected override void OnDestroy()
