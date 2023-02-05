@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb4a519e0199dc4b9e486e5475281e8, type: 3}
   m_Name: SO_Bot_2_Puller_Normal
   m_EditorClassIdentifier: 
-  PullerName: Bot
+  PullerName: PC
+  PullerColor: {r: 0.9294118, g: 0.3803922, b: 0.47450984, a: 1}
   PullForce: 1
   CooldownRange: {x: 0.05, y: 0.08}
   Accuracy: 70

@@ -69,8 +69,13 @@ public class CharacterSelect : Singleton<CharacterSelect>
     {
         if (CanAdd())
         {
-            Add(GetBotPuller(DefaultDifficulty));
+            Add(GetBot());
         }
+    }
+
+    public SOBotPuller GetBot()
+    {
+        return GetBotPuller(DefaultDifficulty);
     }
 
     private SOBotPuller GetBotPuller(Difficulty difficulty)

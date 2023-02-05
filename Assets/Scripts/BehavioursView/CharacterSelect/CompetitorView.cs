@@ -22,10 +22,13 @@ public class CompetitorView : MonoBehaviour
 
     public Action<SOPuller> OnJoin, OnReady, OnUnready, OnUnJoin;
 
+    public bool Ready => _ready;
+    public bool Joined => _joined;
     [SerializeField, ReadOnly] private bool _joined, _ready;
     private List<ControlMap.Map> _maps = new List<ControlMap.Map>();
 
-    private SOPuller selectedSetup;
+    public SOPuller SelectedSetup => _selectedSetup;
+    private SOPuller _selectedSetup;
 
     private void Awake()
     {
@@ -56,14 +59,29 @@ public class CompetitorView : MonoBehaviour
 
         ConfirmHolder.gameObject.SetActive(false);
         ConfirmBack.gameObject.SetActive(false);
+
+        CompetitorName.text = "";
+    }
+
+    public void BlockJoin()
+    {
+        JoinImages[0].Activate(false);
+        JoinImages[1].Activate(false);
+    }
+
+    public void UnblockJoin()
+    {
+        JoinImages[0].Activate(false);
+        JoinImages[1].Activate(false);
     }
 
     private void JoinedProcedure()
     {
         if (_joined) return;
+        _joined = true;
+
         SetConfirmSetup(defaultSetup);
         OnJoin?.Invoke(defaultSetup);
-        _joined = true;
 
         JoinImages[0].Activate(false);
         JoinImages[1].Activate(false);
@@ -84,7 +102,7 @@ public class CompetitorView : MonoBehaviour
         CompetitorName.text = puller.PullerName;
         CompetitorName.color = puller.PullerColor;
 
-        selectedSetup = puller;
+        _selectedSetup = puller;
 
         if (puller is SOBotPuller botPuller)
         {
@@ -123,12 +141,13 @@ public class CompetitorView : MonoBehaviour
     private void ReadyProcedure()
     {
         if (!_joined || _ready) return;
+        _ready = true;
 
         ConfirmReady.Activate(false);
         ConfirmReadyHolder.gameObject.SetActive(false);
         ConfirmBack.gameObject.SetActive(true);
 
-        OnReady?.Invoke(selectedSetup);
+        OnReady?.Invoke(_selectedSetup);
     }
 
     public void OnReadyBlock()
@@ -149,33 +168,33 @@ public class CompetitorView : MonoBehaviour
     {
         if (_joined && !_ready)
         {
-            OnUnJoin?.Invoke(selectedSetup);
             _joined = false;
-            RemoveConfirmSetup(selectedSetup);
+            OnUnJoin?.Invoke(_selectedSetup);
+            RemoveConfirmSetup(_selectedSetup);
             SetJoinSetup(defaultSetup);
-            selectedSetup = null;
+            _selectedSetup = null;
             return;
         }
 
         if (_ready)
         {
-            if (selectedSetup is SOBotPuller botPuller)
+            _ready = false;
+            if (_selectedSetup is SOBotPuller botPuller)
             {
-                RemoveConfirmSetup(selectedSetup);
+                RemoveConfirmSetup(_selectedSetup);
                 SetJoinSetup(defaultSetup);
                 _joined = false;
-                selectedSetup = null;
+                _selectedSetup = null;
             }
-            else if (selectedSetup is SOPlayerPuller playerPuller)
+            else if (_selectedSetup is SOPlayerPuller playerPuller)
             {
                 ConfirmReady.Activate(true);
                 ConfirmReadyHolder.gameObject.SetActive(true);
                 HoldLeaveJoin.Reset();
-                SetConfirmSetup(selectedSetup);
+                SetConfirmSetup(_selectedSetup);
             }
-            OnUnready?.Invoke(selectedSetup);
+            OnUnready?.Invoke(_selectedSetup);
             ConfirmBack.gameObject.SetActive(false);
-            _ready = false;
             return;
         }
     }

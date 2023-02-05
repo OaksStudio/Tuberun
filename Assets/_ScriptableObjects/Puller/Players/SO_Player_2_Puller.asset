@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54ca3fb5b2b8d740aac4f028887fdc5, type: 3}
   m_Name: SO_Player_2_Puller
   m_EditorClassIdentifier: 
-  PullerName: Player 2
-  PullerColor: {r: 1, g: 0, b: 0, a: 1}
+  PullerName: P2
+  PullerColor: {r: 0.9294118, g: 0.3803922, b: 0.47450984, a: 1}
   PullForce: 1
   _controlMap:
     KeysMapped:
