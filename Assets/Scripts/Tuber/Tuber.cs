@@ -49,12 +49,16 @@ public class Tuber : MonoBehaviour
         MoveToPosition.StartMoving = false;
         OnSetup?.Invoke();
     }
-
+    
     private void Update()
     {
         if (MoveToPosition.StartMoving)
         {
-            
+            if (Vector2.Distance(MoveToPosition.transform.position, MoveToPosition.TargetPosition.position) < DistanceToTarget)
+            {
+                Reset();
+                MoveToPosition.StartMoving = false;
+            }
         }
     }
 

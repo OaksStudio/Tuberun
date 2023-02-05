@@ -114,7 +114,7 @@ public class TuberView : MonoBehaviour
 
     public void StartRunning()
     {
-        
+        _tuber.MoveToPosition.StartMoving = true;
     }
 
     [Button]
