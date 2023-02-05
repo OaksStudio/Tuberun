@@ -98,7 +98,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 0.3609128, g: 0.8396226, b: 0.22574759, a: 1}
     m_HighlightedColor: {r: 1, g: 0.84734726, b: 0.6084906, a: 1}

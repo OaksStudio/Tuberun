@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SOGameMode : MonoBehaviour
+[CreateAssetMenu(fileName = "SO_GameMode", menuName = "GameSettings/GameMode", order = 1)]
+public class SOGameMode : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string GameModeName = "Normal run";
+    [Header("Final Visual Result")]
+    public bool ShowResultMessage = true;
+    public string ResultMessage = "Winner!!!";
+    public bool Showtime = true;
+    public string RematchText = "Rematch";
 }

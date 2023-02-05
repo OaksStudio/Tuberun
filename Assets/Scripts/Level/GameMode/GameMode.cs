@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class GameMode : MonoBehaviour
 {
     [Header("Info")]
+    public SOGameMode GameModeInfo;
     public SOHarvester harvesterInfo;
 
     [Header("Farm Rows")]
