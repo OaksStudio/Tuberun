@@ -232,6 +232,68 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1302634911}
     m_Modifications:
+    - target: {fileID: 442587525753161160, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442587525753161160, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442587525753161160, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442587525753161160, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1161127051457321825, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1161127051457321825, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1161127051457321825, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1161127051457321825, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164967739600078560, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_text
+      value: 'PRODUCTION AND GAME DESIGN
+
+        Gabriel Carvalho
+
+
+        CHARACTER
+        ART AND ANIMATION
+
+        Koji Shintome
+
+        Isabella Soares Ruiz
+
+
+        2D
+        ART AND BACKGROUND
+
+        Arthur Laranja
+
+        Helena Ene
+
+        Renato
+        Gimbernau Gimenez'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164967739952561516, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_text
+      value: "\nUI \nRenato Gimbernau Gimenez\nHelena Ene\n\nCODING\nJoziel Ribeiro\n\nSOUNDS\nVinicius
+        Arriel\n\nSPECIAL THANKS TO\nLucas Faria\nIsabela Bray\nBabi\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 5290556528961815361, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
       propertyPath: m_Name
       value: View-Credits
@@ -318,6 +380,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5290556528961815374, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396121092985994688, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396121092985994688, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396121092985994688, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396121092985994688, guid: 5a446fe1e03f98c4eac8bbee75ab8aa4, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
