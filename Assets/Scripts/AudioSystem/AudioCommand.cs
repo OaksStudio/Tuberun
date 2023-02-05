@@ -71,6 +71,7 @@ public class AudioCommand : MonoBehaviour
     private void MuteProcedure(AudioMixerGroup mixer)
     {
         if (!_audioSource) _audioSource = GetComponent<AudioSource>();
+        if (_audio == null) return;
         if (_audio.Mixer != mixer) return;
         _audioSource.mute = true;
     }
@@ -78,6 +79,7 @@ public class AudioCommand : MonoBehaviour
     private void UnmuteProcedure(AudioMixerGroup mixer)
     {
         if (!_audioSource) _audioSource = GetComponent<AudioSource>();
+        if (_audio == null) return;
         if (_audio.Mixer != mixer) return;
         _audioSource.mute = false;
     }

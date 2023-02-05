@@ -7,13 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 732456517562012495, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: _audio
+      value: 
+      objectReference: {fileID: 11400000, guid: ca3e50f9d982f1f4997d0292f2b66cb1, type: 2}
     - target: {fileID: 5507365480306314971, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
       propertyPath: m_text
       value: back
       objectReference: {fileID: 0}
     - target: {fileID: 5507365480306314971, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
       propertyPath: m_fontSize
-      value: 26.85
+      value: 33.3
       objectReference: {fileID: 0}
     - target: {fileID: 5507365480306314971, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
       propertyPath: m_fontStyle

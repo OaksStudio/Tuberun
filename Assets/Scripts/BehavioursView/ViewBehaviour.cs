@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using OAKS.Utilities.Views;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(ViewBase))]
 public class ViewBehaviour : MonoBehaviour
 {
     [Header("Setup")]
     public bool CancelReturn = true;
+    public UnityEvent CancelEvent;
 
     [SerializeField] protected ViewMenuController _viewMenuController;
     protected ViewBase _viewBase;
