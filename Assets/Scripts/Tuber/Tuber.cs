@@ -31,6 +31,7 @@ public class Tuber : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider2D>();
     }
 
+    [Button]
     public void Setup(int rowID, SOTuber tuberInfo)
     {
         _rowID = rowID;
