@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Jozi.Utilities.Parameters;
 using UnityEngine;
 
-public class SOGameMode : MonoBehaviour
+[CreateAssetMenu(fileName = "SO_GameMode", menuName = "GameSettings/GameMode", order = 1)]
+public class SOGameMode : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string GameModeName = "Normal run";
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public SOScene GameModeScene;
+
+    [Header("Final Visual Result")]
+    public bool ShowResultMessage = true;
+    public string ResultMessage = "Winner!!!";
+    public bool Showtime = true;
+    public string RematchText = "Rematch";
 }

@@ -24,8 +24,8 @@ namespace OAKS.Utilities.Views
 
         [Header("Animation")]
         [SerializeField] protected bool DisableOnExit;
-        [SerializeField] protected ViewAnimationSettingsSO EnterSettings;
-        [SerializeField] protected ViewAnimationSettingsSO ExitSettings;
+        [SerializeField] public ViewAnimationSettingsSO EnterSettings;
+        [SerializeField] public ViewAnimationSettingsSO ExitSettings;
 
         [Header("Setup")]
         [SerializeField] protected bool DisableButtonsOnStack = true;
@@ -39,9 +39,10 @@ namespace OAKS.Utilities.Views
 
         protected void Awake()
         {
+            _buttons = GetComponentsInChildren<Button>().ToList();
+            ButtonsActivation(false);
             InitStart();
             _rectTransform = transform.GetComponent<RectTransform>();
-            ButtonsActivation(false);
         }
 
         protected virtual void InitStart()
@@ -104,8 +105,9 @@ namespace OAKS.Utilities.Views
                 Activation(value);
                 yield break;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
             Activation(value);
+            _buttonProcedureCO = null;
         }
 
         private void Activation(bool value)
@@ -134,8 +136,6 @@ namespace OAKS.Utilities.Views
 
             if (!_eventSystem)
                 _eventSystem = EventSystem.current;
-
-            _buttons = GetComponentsInChildren<Button>().ToList();
         }
 
         protected bool CanExecuteAnimation()
@@ -146,6 +146,11 @@ namespace OAKS.Utilities.Views
         protected void TryGetName()
         {
             ViewId = gameObject.name;
+        }
+
+        internal void PushView(object view)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9ef5ea1e73cf048a25fe0eb9a66db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameModeInfo: {fileID: 11400000, guid: 9360b160e48318b4b996780a02a2be3b, type: 2}
   harvesterInfo: {fileID: 11400000, guid: 37fee73654bfeec4695ba5c3a47c74f1, type: 2}
   farmType: 0
   TuberRows:

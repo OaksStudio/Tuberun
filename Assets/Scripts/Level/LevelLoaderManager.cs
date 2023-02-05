@@ -12,15 +12,33 @@ namespace Jozi.Level
     public class LevelLoaderManager : Singleton<LevelLoaderManager>
     {
         [Header("Setup")]
-        public Animator Animator;
-        public string TriggerName = "start";
-        public float TransitionTime = 2;
+        public float TransitionInTime = 0.1f;
+        public float TransitionOutTime = 0.1f;
         public string NextLevel;
-        public Slider LoadSlider;
+        public ViewAnimationSettingsSO OverrideEnterSettings;
 
         [Header("View")]
         public ViewBase View;
         public ViewMenuController ViewController;
+
+        private static bool _wasLoading;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            if (_wasLoading)
+            {
+                View.EnterSettings = OverrideEnterSettings;
+                ViewController.ForceInitialView(View);
+                StartCoroutine(PopUpAfterLoad());
+            }
+        }
+
+        private IEnumerator PopUpAfterLoad()
+        {
+            yield return new WaitForSeconds(TransitionInTime);
+            ViewController.PopView();
+        }
 
         public void LoadNextLevel()
         {
@@ -49,23 +67,22 @@ namespace Jozi.Level
 
         private IEnumerator LoadLevelCO(string sceneName)
         {
+            _wasLoading = true;
             ViewController.PushView(View);
-            yield return new WaitForSeconds(TransitionTime);
+            yield return new WaitForSeconds(TransitionInTime);
 
             StartCoroutine(LoadAsynchrously(sceneName));
         }
 
         private IEnumerator LoadAsynchrously(string sceneName)
         {
+            _wasLoading = true;
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
             while (!operation.isDone)
             {
-                float progress = Mathf.Clamp01(operation.progress / .9f);
-                //LoadSlider.value = progress;
+                //float progress = Mathf.Clamp01(operation.progress / .9f);
                 yield return null;
             }
-
-            ViewController.PopView();
         }
     }
 }

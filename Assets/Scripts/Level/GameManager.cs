@@ -28,6 +28,12 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public List<int> CompetitorsPoints => _competitorsPoints;
+    private List<int> _competitorsPoints = new List<int>();
+
+    public List<float> CompetitorsTime => _competitorsTime;
+    private List<float> _competitorsTime = new List<float>();
+
     public List<Puller> Pullers => _pullers;
     public GameMode GameMode => _gameMode;
 
@@ -35,11 +41,13 @@ public class GameManager : Singleton<GameManager>
 
     public Action<SOPuller> OnWon;
     public Action OnLost;
+    public Action<int> OnSetTime, OnAddPoint;
 
     private void Start()
     {
         _gameMode = FindObjectOfType<GameMode>();
-
+        _competitorsPoints = new List<int>();
+        _competitorsTime = new List<float>();
         for (int i = 0; i < Competitors.Count; i++)
         {
             GameObject pullerHolder = new GameObject();
@@ -58,6 +66,9 @@ public class GameManager : Singleton<GameManager>
                 puller.Setup(i, botPuller);
                 _pullers.Add(puller);
             }
+
+            _competitorsPoints.Add(0);
+            _competitorsTime.Add(0);
         }
 
         _gameMode.Setup(MatchTubers);
@@ -65,17 +76,33 @@ public class GameManager : Singleton<GameManager>
         _gameMode.OnAllLost += Losted;
     }
 
+    [Button]
+    public void AddPoint(int value, int competitorIndex)
+    {
+        CompetitorsPoints[competitorIndex] += value;
+        OnAddPoint?.Invoke(competitorIndex);
+    }
+
+    [Button]
+    public void SetTime(float time, int competitorIndex)
+    {
+        CompetitorsTime[competitorIndex] = time;
+        OnSetTime?.Invoke(competitorIndex);
+    }
+
+    [Button]
     private void Won(int pullerIndex)
     {
+        PauseManager.Instance.CanPause = false;
         DisablePullers();
-        Debug.Log($"O fugitivo {Competitors[pullerIndex].PullerName} Ganhou!");
         OnWon?.Invoke(Competitors[pullerIndex]);
     }
 
+    [Button]
     private void Losted()
     {
+        PauseManager.Instance.CanPause = false;
         DisablePullers();
-        Debug.Log($"Todos os fugitivos perderam!");
         OnLost?.Invoke();
     }
 

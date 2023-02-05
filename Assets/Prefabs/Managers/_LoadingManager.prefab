@@ -45,11 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49f35cdbaa4e4f449e0dac1a308bd99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
-  TriggerName: start
-  TransitionTime: 2
+  TransitionInTime: 0.5
+  TransitionOutTime: 0.5
   NextLevel: 
-  LoadSlider: {fileID: 0}
+  OverrideEnterSettings: {fileID: 11400000, guid: ee7b9edb102d9be49bcb15bb2957878c, type: 2}
   View: {fileID: 187048378034931307}
   ViewController: {fileID: 6988326964538308648}
 --- !u!1001 &1361729163007855051
@@ -59,6 +58,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8762475081099093883}
     m_Modifications:
+    - target: {fileID: 1188197100757340064, guid: d69c97fb39add2d4eb69dc7126cea903, type: 3}
+      propertyPath: ExitSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: b8259c089190da94383db1034cc3af6b, type: 2}
     - target: {fileID: 3388882027789348069, guid: d69c97fb39add2d4eb69dc7126cea903, type: 3}
       propertyPath: m_Name
       value: View - Loading
@@ -160,24 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0faca7199637ff741bf634bebd9c3ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4459248946644666284 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3388882028468751975, guid: d69c97fb39add2d4eb69dc7126cea903, type: 3}
-  m_PrefabInstance: {fileID: 1361729163007855051}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3280094623129081499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4459248946644666284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!1001 &6426279452195056012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -187,7 +172,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1791200664307089286, guid: c36104b5d224ef249a6952eec0256077, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2356556557206277879, guid: c36104b5d224ef249a6952eec0256077, type: 3}
       propertyPath: m_Pivot.x
