@@ -4,7 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Linq;
 
-namespace MonsterWhaser.Utilities.Views
+namespace OAKS.Utilities.Views
 {
     [DisallowMultipleComponent]
     public class ViewMenuController : MonoBehaviour
@@ -15,7 +15,7 @@ namespace MonsterWhaser.Utilities.Views
         [SerializeField] private List<ViewBase> Views = new List<ViewBase>();
         [ShowInInspector]
         private Stack<ViewBase> _viewsStack = new Stack<ViewBase>();
-
+        private ViewBase _lastPage;
         private void Awake()
         {
             Init();
@@ -33,6 +33,7 @@ namespace MonsterWhaser.Utilities.Views
 
         }
 
+        [Button]
         public void PushView(ViewBase view)
         {
             if (IsViewOnTop(view)) return;
@@ -40,17 +41,22 @@ namespace MonsterWhaser.Utilities.Views
 
             if (_viewsStack.Count > 0)
             {
-                var currentPage = _viewsStack.Peek();
-
-                if (currentPage.RemoveOnNewViewPush)
+                _lastPage = _viewsStack.Peek();
+                _lastPage.OnStack();
+                if (_lastPage.RemoveOnNewViewPush)
+                {
                     PopView();
-                else if (currentPage.ExitOnNewViewPush)
-                    currentPage.OnExit();
+                }
+                else if (_lastPage.ExitOnNewViewPush)
+                {
+                    _lastPage.OnExit();
+                }
             }
 
             _viewsStack.Push(view);
         }
 
+        [Button]
         public void PushView(string viewId)
         {
             if (!IsViewOnStack(viewId)) return;
@@ -61,18 +67,23 @@ namespace MonsterWhaser.Utilities.Views
         {
             if (_viewsStack.Count == 0) return;
 
-            var popPage = _viewsStack.Pop();
+            ViewBase popPage = _viewsStack.Pop();
             popPage.OnExit();
 
             if (_viewsStack.Count == 0) return;
 
-            var currentPage = _viewsStack.Peek();
+            ViewBase currentPage = _viewsStack.Peek();
 
             if (currentPage.ExitOnNewViewPush)
+            {
                 currentPage.OnEnter();
+            }
             else
+            {
                 currentPage.SetSelected();
 
+                currentPage.OnUnstack();
+            }
         }
 
         private void OnReturn()

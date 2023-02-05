@@ -4,7 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
-namespace MonsterWhaser.Utilities.Views
+namespace OAKS.Utilities.Views
 {
     public class ViewButtonBase : ButtonBase
     {

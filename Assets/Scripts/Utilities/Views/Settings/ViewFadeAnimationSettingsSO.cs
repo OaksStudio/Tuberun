@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MonsterWhaser.Utilities.Views
+namespace OAKS.Utilities.Views
 {
     [CreateAssetMenu(menuName = "Views/Animations Settings/Fade", fileName = "ANIM_FAD_Default_SO")]
     public class ViewFadeAnimationSettingsSO : ViewAnimationSettingsSO

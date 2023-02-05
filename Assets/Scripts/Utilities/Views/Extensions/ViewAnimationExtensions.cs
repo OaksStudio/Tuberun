@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 
-namespace MonsterWhaser.Utilities.Views
+namespace OAKS.Utilities.Views
 {
     public static class ViewAnimationExtensions
     {

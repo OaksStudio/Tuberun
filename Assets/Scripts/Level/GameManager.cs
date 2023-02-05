@@ -8,20 +8,30 @@ using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager>
 {
-    public static List<SOPuller> SelectedCompetitors = new List<SOPuller>();
-
-    public List<Puller> Pullers => _pullers;
-    public GameMode GameMode => _gameMode;
-
-    public UnityEvent OnWonEvent, OnLoseEvent;
-
     [Header("Default Info")]
-    public List<SOPuller> Competitors = new List<SOPuller>();
+    public List<SOPuller> DefaultCompetitors = new List<SOPuller>();
+
+    [Header("Tubers")]
     public List<SOTuber> MatchTubers = new List<SOTuber>();
 
     [Header("Hidden")]
     [SerializeField, ReadOnly] private GameMode _gameMode;
     [SerializeField, ReadOnly] private List<Puller> _pullers = new List<Puller>();
+
+
+    public List<SOPuller> Competitors
+    {
+        get
+        {
+            if (CharacterSelect.SelectedCompetitors.Count <= 0) return DefaultCompetitors;
+            return CharacterSelect.SelectedCompetitors;
+        }
+    }
+
+    public List<Puller> Pullers => _pullers;
+    public GameMode GameMode => _gameMode;
+
+    public UnityEvent OnWonEvent, OnLoseEvent;
 
     public Action<SOPuller> OnWon;
     public Action OnLost;
@@ -78,5 +88,3 @@ public class GameManager : Singleton<GameManager>
     }
 
 }
-
-public enum Direction { UP = 0, DOWN = 1, RIGHT = 2, LEFT = 3, ANY = 4, NONE = 5 }

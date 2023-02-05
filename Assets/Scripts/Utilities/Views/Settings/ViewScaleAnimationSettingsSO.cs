@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MonsterWhaser.Utilities.Views
+namespace OAKS.Utilities.Views
 {
     [CreateAssetMenu(menuName = "Views/Animations Settings/Scale", fileName = "ANIM_SCL_Default_SO")]
     public class ViewScaleAnimationSettingsSO : ViewAnimationSettingsSO

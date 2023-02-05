@@ -7,7 +7,7 @@ public class BotPuller : Puller
     public SOBotPuller _pullerInfo;
     private TuberRow _tuberRow;
 
-    public float _timeStamp;
+    private float _timeStamp;
 
     public override void Setup(int id, SOPuller puller)
     {
@@ -26,16 +26,16 @@ public class BotPuller : Puller
         if (_timeStamp > Time.time) return;
         if (!_tuberRow.GetTuber()) return;
 
-        Direction correctDirection = _tuberRow.GetTuber().GetCorrectDirection();
+        InputActions correctDirection = _tuberRow.GetTuber().GetCorrectDirection();
 
         float random = Random.Range(0, _pullerInfo.MaxAccuracy);
-        Direction randomDirection = random < _pullerInfo.Accuracy ? correctDirection : Direction.NONE;
+        InputActions randomDirection = random < _pullerInfo.Accuracy ? correctDirection : InputActions.NONE;
 
         _timeStamp = Time.time + Random.Range(_pullerInfo.CooldownRange.x, _pullerInfo.CooldownRange.y);
         ProcessPull(randomDirection);
     }
 
-    private void ProcessPull(Direction direction)
+    private void ProcessPull(InputActions direction)
     {
         OnPull?.Invoke(direction, _pullerInfo.PullForce);
     }

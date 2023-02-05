@@ -10,29 +10,3 @@ public class SOPlayerPuller : SOPuller
     [SerializeField] private ControlMap _controlMap;
 }
 
-[System.Serializable]
-public class ControlMap
-{
-    public List<Map> KeysMapped = new List<Map>();
-
-    public Action<Direction> OnKeyDown;
-
-    [System.Serializable]
-    public struct Map
-    {
-        public KeyCode KeyCode;
-        public Direction Direction;
-
-    }
-
-    public void CheckKeyDown()
-    {
-        for (int i = 0; i < KeysMapped.Count; i++)
-        {
-            if (Input.GetKeyDown(KeysMapped[i].KeyCode))
-            {
-                OnKeyDown?.Invoke(KeysMapped[i].Direction);
-            }
-        }
-    }
-}
