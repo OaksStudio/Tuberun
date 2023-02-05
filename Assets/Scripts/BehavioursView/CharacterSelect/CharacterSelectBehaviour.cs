@@ -8,7 +8,7 @@ using OAKS.Utilities.Views;
 public class CharacterSelectBehaviour : ViewBehaviour
 {
     [Header("Next View")]
-    [SerializeField] protected string NextViewName = "View-SelectGameMode";
+    [SerializeField] protected string NextViewName = "View-ConfirmAndSelectBot";
     [SerializeField] private ViewBase NextView;
     [Header("Setup")]
     public CompetitorView Competitor_1;

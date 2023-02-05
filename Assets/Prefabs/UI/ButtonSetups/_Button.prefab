@@ -98,9 +98,9 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.3609128, g: 0.8396226, b: 0.22574759, a: 1}
+    m_NormalColor: {r: 0.75, g: 1, b: 0.85709524, a: 1}
     m_HighlightedColor: {r: 1, g: 0.84734726, b: 0.6084906, a: 1}
     m_PressedColor: {r: 0.8301887, g: 0.4924669, b: 0.23104309, a: 1}
     m_SelectedColor: {r: 0.9843138, g: 0.6509804, b: 0.12941177, a: 1}
@@ -238,7 +238,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2164967739728737191, guid: c8aa6603edeebf34f80d3029f27625d2, type: 3}
       propertyPath: m_fontSize
-      value: 30
+      value: 33.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164967739728737191, guid: c8aa6603edeebf34f80d3029f27625d2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4073880729841844509, guid: 35d2e26f57e15414799d834c5bc22966, type: 2}
+    - target: {fileID: 2164967739728737191, guid: c8aa6603edeebf34f80d3029f27625d2, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4284370517
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8aa6603edeebf34f80d3029f27625d2, type: 3}

@@ -27,6 +27,11 @@ namespace OAKS.Utilities.Views
             PushView(InitialView);
         }
 
+        public void ForceInitialView(ViewBase viewBase)
+        {
+            InitialView = viewBase;
+        }
+
         private void Init()
         {
             GetAllViews();

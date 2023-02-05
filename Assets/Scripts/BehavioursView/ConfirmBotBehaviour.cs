@@ -12,7 +12,7 @@ public class ConfirmBotBehaviour : ViewBehaviour
     public HoldButton HoldConfirm;
 
     [Header("Next View")]
-    [SerializeField] protected string NextViewName = "View-ConfirmAndSelectBot";
+    [SerializeField] protected string NextViewName = "View-SelectGameMode";
     [SerializeField] private ViewBase NextView;
 
     [Header("Difficulty Setup")]
