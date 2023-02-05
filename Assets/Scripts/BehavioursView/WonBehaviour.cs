@@ -43,6 +43,11 @@ public class WonBehaviour : ViewBehaviour
         GameManager.Instance.OnWon += Call;
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnWon -= Call;
+    }
+
     private void Call(SOPuller winner)
     {
         SOPuller first = GameManager.Instance.Competitors[0];

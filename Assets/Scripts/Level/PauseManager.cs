@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PauseManager : Singleton<PauseManager>
 {
+    public float ScaledTime = 0;
     public bool CanPause = true;
     public bool IsPaused = false;
 
@@ -16,7 +17,7 @@ public class PauseManager : Singleton<PauseManager>
     public void Pause()
     {
         if (!CanPause) return;
-        Time.timeScale = 0;
+        Time.timeScale = ScaledTime;
         IsPaused = true;
     }
 
@@ -24,5 +25,10 @@ public class PauseManager : Singleton<PauseManager>
     {
         Time.timeScale = 1;
         IsPaused = false;
+    }
+
+    private void OnDestroy()
+    {
+        UnPause();
     }
 }

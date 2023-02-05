@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SO_NormalRun
   m_EditorClassIdentifier: 
   GameModeName: Normal run
+  GameModeScene: {fileID: 11400000, guid: e1fb7190e4c6cd44db4f23da1e8925b0, type: 2}
   ShowResultMessage: 1
   ResultMessage: Winner!!
   Showtime: 1

@@ -105,7 +105,7 @@ namespace OAKS.Utilities.Views
                 Activation(value);
                 yield break;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
             Activation(value);
             _buttonProcedureCO = null;
         }

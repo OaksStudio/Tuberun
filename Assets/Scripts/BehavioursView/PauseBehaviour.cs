@@ -6,10 +6,15 @@ public class PauseBehaviour : ViewBehaviour
 {
     private Coroutine _pauseCO;
 
+    public float CancelCooldown = 0.2f;
+    private float _timeStamp;
+
     protected override void OnEnter()
     {
         base.OnEnter();
         PauseManager.Instance.Pause();
+
+        _timeStamp = Time.time + _timeStamp;
 
         if (_pauseCO != null)
         {
@@ -27,6 +32,17 @@ public class PauseBehaviour : ViewBehaviour
         {
             StopCoroutine(_pauseCO);
             _pauseCO = null;
+        }
+    }
+
+
+    protected override void Update()
+    {
+        if (!CancelReturn) return;
+        if (!_viewMenuController.IsViewOnTop(_viewBase)) return;
+        if (Input.GetButtonDown("Cancel") && _timeStamp < Time.time)
+        {
+            _viewMenuController.PopView();
         }
     }
 
