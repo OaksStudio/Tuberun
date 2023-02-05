@@ -311,7 +311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d83f1d2d908f82845bd82fe7fc56f67b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7d692b613c4d144498502631acb4607, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -474,6 +474,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004913, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004913, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1fde0413c89521d4086050079780586a, type: 3}
     - target: {fileID: 5507365481376004914, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
       propertyPath: m_Name
       value: PFB_Quit_Button
@@ -577,18 +585,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5507365481376004914, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
   m_PrefabInstance: {fileID: 3355470402830600180}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &637351490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7133439251871710406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38da2a070c4ddc94db97fdbb9cf1cb5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &119059554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,6 +613,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   ConfirmBehaviour: {fileID: 0}
+--- !u!114 &637351490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133439251871710406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38da2a070c4ddc94db97fdbb9cf1cb5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7133439251871710407 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5507365481376004915, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
@@ -675,6 +683,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004913, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8ae12264916e0544bc1b4ef1b54e663, type: 3}
     - target: {fileID: 5507365481376004914, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
       propertyPath: m_Name
       value: PFB_Start_Button
@@ -808,6 +820,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text
       objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004913, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004913, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 41d429bc576f3f2468afe35dcffab83b, type: 3}
     - target: {fileID: 5507365481376004914, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
       propertyPath: m_Name
       value: PFB_HowTo_Button
@@ -936,6 +956,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text
       objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004913, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004913, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e37ab891e6b835346a8426f6d8c548fa, type: 3}
     - target: {fileID: 5507365481376004914, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
       propertyPath: m_Name
       value: PFB_Credits_Button
