@@ -147,5 +147,10 @@ namespace OAKS.Utilities.Views
         {
             ViewId = gameObject.name;
         }
+
+        internal void PushView(object view)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

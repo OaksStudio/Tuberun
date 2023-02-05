@@ -40,7 +40,8 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent OnWonEvent, OnLoseEvent;
 
     public Action<SOPuller> OnWon;
-    public Action OnLost, OnAddPoint, OnSetTime;
+    public Action OnLost;
+    public Action<int> OnSetTime, OnAddPoint;
 
     private void Start()
     {
@@ -79,29 +80,29 @@ public class GameManager : Singleton<GameManager>
     public void AddPoint(int value, int competitorIndex)
     {
         CompetitorsPoints[competitorIndex] += value;
-        OnAddPoint?.Invoke();
+        OnAddPoint?.Invoke(competitorIndex);
     }
 
     [Button]
     public void SetTime(float time, int competitorIndex)
     {
         CompetitorsTime[competitorIndex] = time;
-        OnSetTime?.Invoke();
+        OnSetTime?.Invoke(competitorIndex);
     }
 
     [Button]
     private void Won(int pullerIndex)
     {
+        PauseManager.Instance.CanPause = false;
         DisablePullers();
-        Debug.Log($"O fugitivo {Competitors[pullerIndex].PullerName} Ganhou!");
         OnWon?.Invoke(Competitors[pullerIndex]);
     }
 
     [Button]
     private void Losted()
     {
+        PauseManager.Instance.CanPause = false;
         DisablePullers();
-        Debug.Log($"Todos os fugitivos perderam!");
         OnLost?.Invoke();
     }
 
