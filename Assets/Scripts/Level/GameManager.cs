@@ -29,10 +29,10 @@ public class GameManager : Singleton<GameManager>
     }
 
     public List<int> CompetitorsPoints => _competitorsPoints;
-    private List<int> _competitorsPoints = new List<int>();
+    [ReadOnly, SerializeField] private List<int> _competitorsPoints = new List<int>();
 
     public List<float> CompetitorsTime => _competitorsTime;
-    private List<float> _competitorsTime = new List<float>();
+    [ReadOnly, SerializeField] private List<float> _competitorsTime = new List<float>();
 
     public List<Puller> Pullers => _pullers;
     public GameMode GameMode => _gameMode;

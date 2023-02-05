@@ -29,6 +29,7 @@ public class TuberView : MonoBehaviour
     public string LeaveTrigger = "OnLeave";
     public string DieTrigger = "OnDie";
     public string AlmostLeavingBool = "AlmostLeaving";
+    public string LeavedBool = "Leaved";
     public string RandomFloat = "Random";
 
     private Tuber _tuber;
@@ -84,6 +85,8 @@ public class TuberView : MonoBehaviour
     [Button]
     private void ReleasedFeedback(Tuber tuber)
     {
+        animator.SetTrigger(LeaveTrigger);
+        animator.SetBool(LeavedBool, true);
         OnReleasedEvent?.Invoke();
     }
 
@@ -108,6 +111,7 @@ public class TuberView : MonoBehaviour
 
     private void Kill()
     {
+        SetSurface();
         animator.SetTrigger(DieTrigger);
         OnDieEvent?.Invoke();
     }
@@ -126,6 +130,8 @@ public class TuberView : MonoBehaviour
     [Button]
     private void Reset()
     {
+        animator.SetBool(AlmostLeavingBool, false);
+        animator.SetBool(LeavedBool, false);
         Model.transform.position = DeeperPosition.position;
         OnResetEvent?.Invoke();
     }

@@ -49,7 +49,7 @@ public class Tuber : MonoBehaviour
         MoveToPosition.StartMoving = false;
         OnSetup?.Invoke();
     }
-    
+
     private void Update()
     {
         if (MoveToPosition.StartMoving)
@@ -100,7 +100,8 @@ public class Tuber : MonoBehaviour
     {
         OnKill?.Invoke();
     }
-
+    
+    [Button]
     private void Pull(float pullForce)
     {
         if (_currentDeepness <= 0) return;

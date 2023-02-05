@@ -14,7 +14,6 @@ public class TuberRow : MonoBehaviour
 
     [Header("Setup")]
     public int PoolExtra = 10;
-    public GameObject TuberPrefab;
 
     public Transform RowHolder;
     public float RowOffset = 1;
@@ -39,7 +38,10 @@ public class TuberRow : MonoBehaviour
         _ID = id;
         _tubers = new Queue<Tuber>();
 
-        PoolCommand.Warm(TuberPrefab, rowSize + PoolExtra);
+        foreach (var tuber in tubers)
+        {
+            PoolCommand.Warm(tuber.TuberPrefab.gameObject, rowSize + PoolExtra);
+        }
 
         for (int i = 0; i < rowSize; i++)
         {
@@ -64,7 +66,7 @@ public class TuberRow : MonoBehaviour
 
     private void CreateTuber(SOTuber tubers)
     {
-        Tuber tuber = PoolCommand.GetObject(TuberPrefab).GetComponent<Tuber>();
+        Tuber tuber = PoolCommand.GetObject(tubers.TuberPrefab.gameObject).GetComponent<Tuber>();
         tuber.Setup(ID, tubers);
 
         if (_stoppedRow)
