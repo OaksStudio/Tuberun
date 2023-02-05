@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class GameMode : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public abstract class GameMode : MonoBehaviour
 
     public Action<int> OnOneWins;
     public Action OnAllLost;
+    public UnityEvent OnCompetitorLost;
 
     public virtual void Setup(List<SOTuber> tubers)
     {
@@ -40,6 +42,8 @@ public abstract class GameMode : MonoBehaviour
 
         GameManager.Instance.Pullers[pullerIndex].Stop();
         TuberRows[pullerIndex].StopRow();
+
+        OnCompetitorLost?.Invoke();
 
         bool allStopped = true;
         for (int i = 0; i < GameManager.Instance.Pullers.Count; i++)

@@ -43,6 +43,12 @@ public class AudioManager : Singleton<AudioManager>
 
         musicMixerMute = MusicMixer.audioMixer.FindMatchingGroups("Music").First();
         soundEffectMixerMute = SoundEffectMixer.audioMixer.FindMatchingGroups("SoundEffect").First();
+
+        if (SfxMuted) OnMute?.Invoke(Instance.soundEffectMixerMute);
+        else OnUnmute?.Invoke(Instance.soundEffectMixerMute);
+
+        if (MusicMuted) OnMute?.Invoke(Instance.musicMixerMute);
+        else OnUnmute?.Invoke(Instance.musicMixerMute);
     }
 
     public void PlayMusic(SOAudio audio)

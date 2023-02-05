@@ -1,5 +1,81 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4020927979767749139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4919610483992574227}
+  - component: {fileID: 6745544980620609545}
+  - component: {fileID: 5286323558160269789}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &4919610483992574227
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020927979767749139}
+  m_LocalRotation: {x: -0, y: -0, z: 0.34707254, w: 0.93783826}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3132472416567407547}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40.617}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 12.845, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6745544980620609545
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020927979767749139}
+  m_CullTransparentMesh: 1
+--- !u!114 &5286323558160269789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020927979767749139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.33333334, g: 0.30588236, b: 0.36862746, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &7428354060327028872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30,6 +106,34 @@ PrefabInstance:
     - target: {fileID: 5507365481376004912, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
       propertyPath: m_Colors.m_NormalColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004912, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004912, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004912, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1730441826933044268}
+    - target: {fileID: 5507365481376004912, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004912, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Mute
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004912, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MuteAudio, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507365481376004912, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5507365481376004913, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
       propertyPath: m_Type
@@ -131,5 +235,59 @@ PrefabInstance:
       propertyPath: controller
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7185733379125006411, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+--- !u!1 &3132472416567407546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5507365481376004914, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+  m_PrefabInstance: {fileID: 7428354060327028872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1730441826933044268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132472416567407546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f542f2b1436854cbc5d8dff18d2667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsMutingMusic: 1
+  OnMute:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4020927979767749139}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnUnmute:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4020927979767749139}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!224 &3132472416567407547 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5507365481376004915, guid: 2d74f944e47d829488f6c0fcf23d9155, type: 3}
+  m_PrefabInstance: {fileID: 7428354060327028872}
+  m_PrefabAsset: {fileID: 0}

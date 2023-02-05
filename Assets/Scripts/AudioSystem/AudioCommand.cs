@@ -73,7 +73,6 @@ public class AudioCommand : MonoBehaviour
         if (!_audioSource) _audioSource = GetComponent<AudioSource>();
         if (_audio.Mixer != mixer) return;
         _audioSource.mute = true;
-        Debug.Log($"Mute {name} = {_audio.Mixer.name}{mixer.name}");
     }
 
     private void UnmuteProcedure(AudioMixerGroup mixer)
@@ -81,6 +80,5 @@ public class AudioCommand : MonoBehaviour
         if (!_audioSource) _audioSource = GetComponent<AudioSource>();
         if (_audio.Mixer != mixer) return;
         _audioSource.mute = false;
-        Debug.Log($"Unmute {name} = {_audio.Mixer.name}{mixer.name}");
     }
 }

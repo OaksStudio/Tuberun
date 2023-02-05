@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class TuberView : MonoBehaviour
 {
     [Header("Events")]
-    public UnityEvent OnPulledEvent, OnReleasedEvent, OnMissEvent, OnStopEvent, OnResetEvent, OnDieEvent;
+    public UnityEvent OnPulledEvent, OnReleasedEvent, OnMissEvent, OnStopEvent, OnResetEvent, OnDieEvent, OnRunEvent;
 
     [Header("Model")]
     public Animator animator;
@@ -119,6 +119,7 @@ public class TuberView : MonoBehaviour
     public void StartRunning()
     {
         _tuber.MoveToPosition.StartMoving = true;
+        OnRunEvent?.Invoke();
     }
 
     [Button]
