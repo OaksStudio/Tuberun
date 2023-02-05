@@ -7,6 +7,8 @@ public class BotPuller : Puller
     public SOBotPuller _pullerInfo;
     private TuberRow _tuberRow;
 
+    private float _delayTimeStamp;
+
     private float _timeStamp;
 
     public override void Setup(int id, SOPuller puller)
@@ -14,6 +16,8 @@ public class BotPuller : Puller
         base.Setup(id, puller);
         _pullerInfo = puller as SOBotPuller;
         _tuberRow = GameManager.Instance.GameMode.TuberRows[id];
+
+        _delayTimeStamp = Time.time + _pullerInfo.DelayToStart;
     }
 
     protected override void Initialize()
@@ -23,6 +27,8 @@ public class BotPuller : Puller
 
     protected override void Process()
     {
+        if (_delayTimeStamp > Time.time) return;
+
         if (_timeStamp > Time.time) return;
         if (!_tuberRow.GetTuber()) return;
 

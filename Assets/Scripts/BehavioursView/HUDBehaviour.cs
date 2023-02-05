@@ -11,6 +11,10 @@ public class HUDBehaviour : ViewBehaviour
     public string EndPointText = "";
     public List<TextMeshProUGUI> Points = new List<TextMeshProUGUI>();
 
+    public List<TextMeshProUGUI> CompetitorsNames = new List<TextMeshProUGUI>();
+
+    public List<TextMeshProUGUI> CompetitorsNamesBack = new List<TextMeshProUGUI>();
+
     public List<Timer> Timers = new List<Timer>();
 
     [Header("Pause")]
@@ -31,6 +35,16 @@ public class HUDBehaviour : ViewBehaviour
         {
             point.text = $"{StartPointText}{0}{EndPointText}";
         }
+
+        CompetitorsNames[0].text = GameManager.Instance.Competitors[0].PullerName;
+        CompetitorsNames[1].text = GameManager.Instance.Competitors[1].PullerName;
+
+        CompetitorsNames[0].color = GameManager.Instance.Competitors[0].PullerColor;
+        CompetitorsNames[1].color = GameManager.Instance.Competitors[1].PullerColor;
+
+        CompetitorsNamesBack[0].text = GameManager.Instance.Competitors[0].PullerName;
+        CompetitorsNamesBack[1].text = GameManager.Instance.Competitors[1].PullerName;
+
     }
 
     private void SetTime(int index)
