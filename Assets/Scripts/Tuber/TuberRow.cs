@@ -85,6 +85,7 @@ public class TuberRow : MonoBehaviour
     public Tuber GetTuber()
     {
         if (_selectedTuber) return _selectedTuber;
+        if (_tubers.Count <= 0) return null;
 
         _selectedTuber = _tubers.Dequeue();
 
@@ -110,6 +111,7 @@ public class TuberRow : MonoBehaviour
     private void TryPullerPull(InputActions direction, float pullForce)
     {
         if (PauseManager.Instance.IsPaused) return;
+        if (!GetTuber()) return;
         GetTuber().TryPull(direction, pullForce);
     }
 
