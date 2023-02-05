@@ -457,8 +457,8 @@ MonoBehaviour:
   StartPointText: 'SCORE '
   EndPointText: 
   Points:
-  - {fileID: 1019300788147659214}
   - {fileID: 5183037937773437342}
+  - {fileID: 1019300788147659214}
   Timers:
   - {fileID: 8758806230910156488}
   - {fileID: 3478211566710193816}

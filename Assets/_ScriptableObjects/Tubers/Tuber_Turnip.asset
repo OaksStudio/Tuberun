@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Tuber_Turnip
   m_EditorClassIdentifier: 
   Deepness: 25
+  PointsByPull: 10
+  PointsByRelease: 50
   BodyColor: {r: 0.9960785, g: 0.93725497, b: 0.8196079, a: 1}
   directions: 04000000
+  TuberPrefab: {fileID: 2909637703750566599, guid: db655a96377569941ad394bd34e53235, type: 3}

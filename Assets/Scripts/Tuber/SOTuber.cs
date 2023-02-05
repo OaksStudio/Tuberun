@@ -13,6 +13,7 @@ public class SOTuber : ScriptableObject
 
     [Header("Input Sequence")]
     public List<InputActions> directions = new List<InputActions>() { InputActions.ANY };
+    public Tuber TuberPrefab;
 
 }
 

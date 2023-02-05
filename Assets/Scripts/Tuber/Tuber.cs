@@ -54,7 +54,11 @@ public class Tuber : MonoBehaviour
     {
         if (MoveToPosition.StartMoving)
         {
-            
+            if (Vector2.Distance(MoveToPosition.transform.position, MoveToPosition.TargetPosition.position) < DistanceToTarget)
+            {
+                Reset();
+                MoveToPosition.StartMoving = false;
+            }
         }
     }
 
@@ -96,7 +100,8 @@ public class Tuber : MonoBehaviour
     {
         OnKill?.Invoke();
     }
-
+    
+    [Button]
     private void Pull(float pullForce)
     {
         if (_currentDeepness <= 0) return;

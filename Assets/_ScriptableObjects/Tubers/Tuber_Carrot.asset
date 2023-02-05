@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Tuber_Carrot
   m_EditorClassIdentifier: 
   Deepness: 25
+  PointsByPull: 10
+  PointsByRelease: 50
   BodyColor: {r: 1, g: 0.62352943, b: 0.24313727, a: 1}
   directions: 0000000001000000
+  TuberPrefab: {fileID: 6746184944680187594, guid: 001adca9a2115254cadbcf66fa822b8a, type: 3}

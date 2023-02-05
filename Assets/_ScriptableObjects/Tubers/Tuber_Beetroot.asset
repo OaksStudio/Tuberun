@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Tuber_Beetroot
   m_EditorClassIdentifier: 
   Deepness: 25
+  PointsByPull: 10
+  PointsByRelease: 50
   BodyColor: {r: 0.5882353, g: 0.21176472, b: 0.43529415, a: 1}
   directions: 0300000002000000
+  TuberPrefab: {fileID: 9107640162314768038, guid: 1fbbc847f457bec44a6adf14150332c1, type: 3}

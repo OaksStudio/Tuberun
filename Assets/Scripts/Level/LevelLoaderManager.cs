@@ -36,7 +36,7 @@ namespace Jozi.Level
 
         private IEnumerator PopUpAfterLoad()
         {
-            yield return new WaitForSeconds(TransitionInTime);
+            yield return new WaitForSecondsRealtime(TransitionInTime);
             ViewController.PopView();
         }
 
@@ -69,7 +69,7 @@ namespace Jozi.Level
         {
             _wasLoading = true;
             ViewController.PushView(View);
-            yield return new WaitForSeconds(TransitionInTime);
+            yield return new WaitForSecondsRealtime(TransitionInTime);
 
             StartCoroutine(LoadAsynchrously(sceneName));
         }
@@ -83,6 +83,7 @@ namespace Jozi.Level
                 //float progress = Mathf.Clamp01(operation.progress / .9f);
                 yield return null;
             }
+
         }
     }
 }
