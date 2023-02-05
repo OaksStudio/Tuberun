@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ANIM_Beterraba_Idle_Leaf
+  m_Name: ANIM_Nabo_Idle_Leaf
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -91,7 +91,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: f3a4f3c0374bee64ba57cb84d9789c9c, type: 3}
+      value: {fileID: 21300000, guid: ee776e934cd3adc4eb46b8284de319b4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -125,7 +125,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: f3a4f3c0374bee64ba57cb84d9789c9c, type: 3}
+    - {fileID: 21300000, guid: ee776e934cd3adc4eb46b8284de319b4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

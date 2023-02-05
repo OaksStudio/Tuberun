@@ -8,4 +8,24 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: AMT_Cenoura
   m_Controller: {fileID: 9100000, guid: 948a00676cd9a7d4bb357fd50ef58d59, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8189be2c21dfc3c45b58741e9a6354d1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 682f170fd388fc74382c4a97e4883efc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 77ea94bb0abda424194d2e8641b5e454, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1e3e0fd5ab3b96e4caf5755d1b00f439, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 673666fb18bfce04297e10845bb1dae7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 97468ac1e80cd9b4db0fee9fe0d59c43, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d3d781639285d1a4fb7a9c0d8478ff80, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ad3cfe9247278d94eb1e283ef49f08fc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dd0c228ce4bfbcd438734d75003071bb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e2d7bc2f7dec318468e722b4585be0d4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5013ab0651854a842ad6f82d1705caf2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e2d7bc2f7dec318468e722b4585be0d4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8da6e0e8a35de794ab2ffbba77634aed, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e2d7bc2f7dec318468e722b4585be0d4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7dafff668c1df544898ab40cb7dab93a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 97468ac1e80cd9b4db0fee9fe0d59c43, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f62d2fab7b5530d47adac5bc1f59f7e0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b1212b4352ae1d244b5fbb08e5ca6a8c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3e7ec756a6dafac48a38e67068df5149, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 63c5e8bf9d9083b4eb6c629ec7c2f7fd, type: 2}
