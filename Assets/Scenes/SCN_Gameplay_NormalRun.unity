@@ -526,7 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   TargetPosition: {fileID: 2043337087}
-  StartMoving: 0
+  StartMoving: 1
 --- !u!1 &527395252
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   TargetPosition: {fileID: 971888569}
-  StartMoving: 0
+  StartMoving: 1
 --- !u!1 &971888568
 GameObject:
   m_ObjectHideFlags: 0
