@@ -127,6 +127,13 @@ public class TuberView : MonoBehaviour
         Model.transform.position = SurfacePosition.position;
     }
 
+
+    [Button]
+    private void SetDeeper()
+    {
+        Model.transform.position = DeeperPosition.position;
+    }
+
     [Button]
     private void Reset()
     {

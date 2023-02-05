@@ -117,10 +117,26 @@ PrefabInstance:
       propertyPath: OnPulledEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 3815034382906605939, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.667
+      objectReference: {fileID: 0}
     - target: {fileID: 3895776076444063495, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 77281665cf6be294a9a72114502e4627, type: 2}
+    - target: {fileID: 4554327403269874024, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634016085456453619, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.7109876
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634016085456453619, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.457
+      objectReference: {fileID: 0}
     - target: {fileID: 5634016086335102350, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -168,6 +184,18 @@ PrefabInstance:
     - target: {fileID: 5634016086335102351, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
       propertyPath: m_Name
       value: _Cenoura_Tuber
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487770445590021883, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083679845219394128, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083679845219394128, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.69
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e32c405888798a14a9c1441cf9493be2, type: 3}
