@@ -15,33 +15,99 @@ MonoBehaviour:
   PullerName: P2
   PullerColor: {r: 0.9294118, g: 0.3803922, b: 0.47450984, a: 1}
   PullForce: 1
+  _gamepadId: -1
   _controlMap:
+    PlayerInput: {fileID: 0}
+    Asset: {fileID: -944628639613478452, guid: c605ae61c877bce4783bc754de3f2f93, type: 3}
     KeysMapped:
     - KeyCode: 273
+      Action:
+        m_Name: UP
+        m_Type: 1
+        m_ExpectedControlType: Button
+        m_Id: be91cf10-f69c-40b1-ab84-367dc74a90c8
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
       InputAction: 0
       ReleaseIcon: {fileID: 21300000, guid: de497b1922bf8f7478443ebb84b08939, type: 3}
       PressedIcon: {fileID: 21300000, guid: 61cd4fe273c620441b464d4fe96521fb, type: 3}
     - KeyCode: 274
+      Action:
+        m_Name: DOWN
+        m_Type: 1
+        m_ExpectedControlType: Button
+        m_Id: e977d3c7-0478-4508-869b-90a2fd2e5045
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
       InputAction: 1
       ReleaseIcon: {fileID: 21300000, guid: 1a7eae168344ed24a8fab02015afd6cd, type: 3}
       PressedIcon: {fileID: 21300000, guid: 27453e310dd946147bffa3ef8e382115, type: 3}
     - KeyCode: 276
+      Action:
+        m_Name: LEFT
+        m_Type: 1
+        m_ExpectedControlType: Button
+        m_Id: a85852bf-f85c-486e-8ff4-e601d4c24edb
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
       InputAction: 3
       ReleaseIcon: {fileID: 21300000, guid: c936966481e3e8848ab78c3acffc6c6e, type: 3}
       PressedIcon: {fileID: 21300000, guid: a2273399a488c094baeadd0d8b32b6c4, type: 3}
     - KeyCode: 275
+      Action:
+        m_Name: RIGHT
+        m_Type: 1
+        m_ExpectedControlType: Button
+        m_Id: bf823f26-822e-4c3d-80cc-d62829d3f89b
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
       InputAction: 2
       ReleaseIcon: {fileID: 21300000, guid: 9f5bce970196474429c9a7c00bdf9537, type: 3}
       PressedIcon: {fileID: 21300000, guid: 65f56c9a4f7df0d41854a43681b382ec, type: 3}
     - KeyCode: 13
+      Action:
+        m_Name: CONFIRM
+        m_Type: 1
+        m_ExpectedControlType: Button
+        m_Id: 0c9b67ee-0ab2-4bab-a52b-a799df5a11d5
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
       InputAction: 6
       ReleaseIcon: {fileID: 21300000, guid: 25c40da71f958ed428653649ffc783a8, type: 3}
       PressedIcon: {fileID: 21300000, guid: 8c5ee845c3396eb4cb2346baa0522184, type: 3}
-    - KeyCode: 305
-      InputAction: 6
-      ReleaseIcon: {fileID: 21300000, guid: 5797cb98437322e4889438302b4b47cd, type: 3}
-      PressedIcon: {fileID: 21300000, guid: 5278b4273227902468800a97b8c5a805, type: 3}
     - KeyCode: 8
+      Action:
+        m_Name: CANCEL
+        m_Type: 1
+        m_ExpectedControlType: Button
+        m_Id: 0975bd9c-fa98-4764-92b4-35863bc4db77
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
       InputAction: 7
       ReleaseIcon: {fileID: 21300000, guid: 897469c5574662b45b7a71a427b5bac6, type: 3}
       PressedIcon: {fileID: 21300000, guid: 897469c5574662b45b7a71a427b5bac6, type: 3}
+    - KeyCode: 305
+      Action:
+        m_Name: RETURN
+        m_Type: 1
+        m_ExpectedControlType: Button
+        m_Id: 91aae9b9-caf6-4d59-bf2d-7cdea869be1f
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
+      InputAction: 8
+      ReleaseIcon: {fileID: 21300000, guid: 5797cb98437322e4889438302b4b47cd, type: 3}
+      PressedIcon: {fileID: 21300000, guid: 5278b4273227902468800a97b8c5a805, type: 3}

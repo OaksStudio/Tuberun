@@ -5,6 +5,8 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using System.Linq;
 
 public class HoldButton : MonoBehaviour
 {
@@ -23,12 +25,14 @@ public class HoldButton : MonoBehaviour
     [SerializeField] private bool _stopOncompleted;
 
     [Header("Hidden")]
-    [SerializeField] private ControlMap.Map _currentMap;
+    [SerializeField] private Map _currentMap;
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private InputActionAsset _asset;
     [SerializeField, ReadOnly] private float _currentProgress;
 
     public Action OnComplete;
 
-    private bool _completed, _active;
+    [SerializeField] private bool _completed, _active, _holdingButton;
 
     private void Awake()
     {
@@ -45,7 +49,7 @@ public class HoldButton : MonoBehaviour
         }
     }
 
-    public void Setup(ControlMap.Map map)
+    public void Setup(Map map, InputActionAsset asset = null)
     {
         _currentMap = map;
 
@@ -68,6 +72,24 @@ public class HoldButton : MonoBehaviour
         }
 
         Reset();
+
+        if (asset != null)
+            _asset = asset;
+
+        if (!_asset) return;
+
+        if (_playerInput)
+            _playerInput.onActionTriggered -= ReadAction;
+
+        _playerInput = FindObjectsOfType<PlayerInput>().
+        ToList().Find(p => p.actions == _asset);
+
+        if (!_playerInput) return;
+
+        _playerInput.onActionTriggered += ReadAction;
+
+        _currentMap.Action = _playerInput.currentActionMap.
+        FindAction(_currentMap.InputAction.ToString());
     }
 
     public void Reset()
@@ -81,7 +103,7 @@ public class HoldButton : MonoBehaviour
     {
         if (_completed && _stopOncompleted) return;
 
-        if (Input.GetKey(_currentMap.KeyCode) && _active)
+        if (_holdingButton && _active)
         {
             _currentProgress = Mathf.Clamp01(_currentProgress + _addSpeed * Time.deltaTime);
             OnHoldEvent?.Invoke();
@@ -129,4 +151,28 @@ public class HoldButton : MonoBehaviour
         ReleasedFillers.ForEach(f => f.fillAmount = value);
         PressedFillers.ForEach(f => f.fillAmount = value);
     }
+
+    private void ReadAction(InputAction.CallbackContext context)
+    {
+        if (!_currentMap.Action.Equals(context.action)) return;
+
+        if (context.started)
+        {
+            _holdingButton = true;
+        }
+
+        if (context.canceled)
+        {
+            _holdingButton = false;
+        }
+
+        //Debug.Log($" {_currentMap.InputAction.ToString()} {context.phase} {context.ReadValue<float>()}");
+    }
+
+    private void OnDestroy()
+    {
+        if (_playerInput)
+            _playerInput.onActionTriggered -= ReadAction;
+    }
+
 }

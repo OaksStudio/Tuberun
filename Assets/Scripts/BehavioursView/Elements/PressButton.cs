@@ -5,15 +5,20 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using System.Linq;
 
 public class PressButton : MonoBehaviour
 {
+    public PlayerInput PlayerInput => _playerInput;
     [Header("Setup")]
     [SerializeField] private Image ReleasedIcon;
     [SerializeField] private Image PressedIcon;
     public UnityEvent OnPress, OnRelease;
     [Header("Hidden")]
-    [SerializeField] private ControlMap.Map _currentMap;
+    [SerializeField] private Map _currentMap;
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private InputActionAsset _asset;
 
     public Action OnButtonDown, OnButtonUp;
     private bool _completed, _active;
@@ -29,7 +34,7 @@ public class PressButton : MonoBehaviour
         _active = value;
     }
 
-    public void Setup(ControlMap.Map map)
+    public void Setup(Map map, InputActionAsset asset = null)
     {
         _currentMap = map;
 
@@ -38,22 +43,38 @@ public class PressButton : MonoBehaviour
 
         ReleasedIcon.enabled = true;
         PressedIcon.enabled = false;
+
+        if (asset != null)
+            _asset = asset;
+
+        if (!_asset) return;
+
+        if (_playerInput)
+            _playerInput.onActionTriggered -= ReadAction;
+
+        _playerInput = FindObjectsOfType<PlayerInput>().
+        ToList().Find(p => p.actions == _asset);
+
+        if (!_playerInput) return;
+        _playerInput.onActionTriggered += ReadAction;
+
+        _currentMap.Action = _playerInput.currentActionMap.
+        FindAction(_currentMap.InputAction.ToString());
     }
 
-    private void Update()
+    private void ReadAction(InputAction.CallbackContext context)
     {
-        if (Input.GetKey(_currentMap.KeyCode) && _active)
+        if (!_currentMap.Action.Equals(context.action)) return;
+
+        if (context.performed && _active)
         {
             if (!PressedIcon.enabled)
             {
                 ReleasedIcon.enabled = false;
                 PressedIcon.enabled = true;
             }
-            if (Input.GetKeyDown(_currentMap.KeyCode))
-            {
-                OnPress?.Invoke();
-                OnButtonDown?.Invoke();
-            }
+            OnPress?.Invoke();
+            OnButtonDown?.Invoke();
         }
         else
         {
@@ -62,12 +83,20 @@ public class PressButton : MonoBehaviour
                 ReleasedIcon.enabled = true;
                 PressedIcon.enabled = false;
             }
-            if (Input.GetKeyUp(_currentMap.KeyCode))
+
+            if (context.canceled)
             {
                 OnRelease?.Invoke();
                 OnButtonUp?.Invoke();
             }
         }
+        //Debug.Log($" {_currentMap.InputAction.ToString()} {context.phase} {context.ReadValue<float>()}");
+    }
+
+    private void OnDestroy()
+    {
+        if (_playerInput)
+            _playerInput.onActionTriggered -= ReadAction;
     }
 
 }

@@ -41,9 +41,9 @@ public class ConfirmBotBehaviour : ViewBehaviour
 
         ControlMap map = (CharacterSelect.SelectedCompetitors.Find(s => s is SOPlayerPuller) as SOPlayerPuller).ControlMap;
 
-        ControlMap.Map confirm = map.KeysMapped.Find(k => k.InputAction == InputActions.CONFIRM);
-        ControlMap.Map left = map.KeysMapped.Find(k => k.InputAction == InputActions.LEFT);
-        ControlMap.Map right = map.KeysMapped.Find(k => k.InputAction == InputActions.RIGHT);
+        Map confirm = map.KeysMapped.Find(k => k.InputAction == InputActions.CONFIRM);
+        Map left = map.KeysMapped.Find(k => k.InputAction == InputActions.LEFT);
+        Map right = map.KeysMapped.Find(k => k.InputAction == InputActions.RIGHT);
 
         HoldConfirm.Setup(confirm);
         PressRemoveDifficulty.Setup(left);

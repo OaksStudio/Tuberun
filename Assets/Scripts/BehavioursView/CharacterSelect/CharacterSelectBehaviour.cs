@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using OAKS.Utilities.Views;
+using UnityEngine.InputSystem;
 
 public class CharacterSelectBehaviour : ViewBehaviour
 {

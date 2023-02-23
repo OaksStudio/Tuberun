@@ -25,7 +25,7 @@ public class CompetitorView : MonoBehaviour
     public bool Ready => _ready;
     public bool Joined => _joined;
     [SerializeField, ReadOnly] private bool _joined, _ready;
-    private List<ControlMap.Map> _maps = new List<ControlMap.Map>();
+    private List<Map> _maps = new List<Map>();
 
     public SOPuller SelectedSetup => _selectedSetup;
     private SOPuller _selectedSetup;
@@ -50,9 +50,10 @@ public class CompetitorView : MonoBehaviour
 
         JoinHolder.gameObject.SetActive(true);
         _maps = defaultSetup.ControlMap.KeysMapped.FindAll(k => k.InputAction == InputActions.CONFIRM);
+        _maps.AddRange(defaultSetup.ControlMap.KeysMapped.FindAll(k => k.InputAction == InputActions.RETURN));
 
-        JoinImages[0].Setup(_maps[0]);
-        JoinImages[1].Setup(_maps[1]);
+        JoinImages[0].Setup(_maps[0], playerPuller.ControlMap.Asset);
+        JoinImages[1].Setup(_maps[1], playerPuller.ControlMap.Asset);
 
         JoinImages[0].Activate(true);
         JoinImages[1].Activate(true);
@@ -104,6 +105,8 @@ public class CompetitorView : MonoBehaviour
 
         _selectedSetup = puller;
 
+        Debug.Log(JoinImages[0].PlayerInput.currentControlScheme);
+
         if (puller is SOBotPuller botPuller)
         {
             ConfirmHolder.gameObject.SetActive(false);
@@ -120,8 +123,8 @@ public class CompetitorView : MonoBehaviour
         {
             ConfirmHolder.gameObject.SetActive(true);
 
-            ConfirmReady.Setup(_maps[0]);
-            HoldLeaveJoin.Setup(_maps[1]);
+            ConfirmReady.Setup(_maps[0], playerPuller.ControlMap.Asset);
+            HoldLeaveJoin.Setup(_maps[1], playerPuller.ControlMap.Asset);
 
             ConfirmReady.Activate(true);
             HoldLeaveJoin.Activate(true);

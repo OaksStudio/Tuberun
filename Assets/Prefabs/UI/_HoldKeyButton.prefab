@@ -290,9 +290,20 @@ MonoBehaviour:
   _stopOncompleted: 0
   _currentMap:
     KeyCode: 127
+    Action:
+      m_Name: Action
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3a166fab-eb6b-41f8-80c3-b9423d066726
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
     InputAction: 7
     ReleaseIcon: {fileID: 21300000, guid: 42d113d8448e65a47a103c72bd0228fc, type: 3}
     PressedIcon: {fileID: 21300000, guid: 046f6f2bda9e16f4a8cf023292ff0fc0, type: 3}
+  _playerInput: {fileID: 0}
+  _asset: {fileID: -944628639613478452, guid: ac0c5bb09418e8c4d8b1454204f48285, type: 3}
   _currentProgress: 0
 --- !u!1 &8636821474344609098
 GameObject:
